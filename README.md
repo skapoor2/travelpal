@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# Travel Pal
+
+Travel Pal is a trip planning web application that includes a packing list, itinerary, budget tracker, and
+calendar feature. This application is built using HTML/CSS, Bootstrap, JavaScript, React, JQuery,
+and public web APIs. The purpose of this web application is to help people plan and organize their travels
+better, sorting travel aspects out into different pages and making them accessible and customizable
+wherever they go.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
