@@ -4,7 +4,9 @@ import './packingList.css';
 class PackingList extends Component {
   render() {
     return (
-      <p>Packing list content</p>
+      <div className="packing">
+        <p>Packing list content</p>
+      </div>
     )
   }
 }

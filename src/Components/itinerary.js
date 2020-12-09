@@ -4,7 +4,9 @@ import './itinerary.css';
 class Itinerary extends Component {
   render() {
     return (
-      <p>Itinerary content</p>
+      <div className="itinerary">
+        <p>Itinerary content</p>
+      </div>
     )
   }
 }

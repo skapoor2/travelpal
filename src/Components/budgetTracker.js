@@ -4,7 +4,9 @@ import './budgetTracker.css';
 class BudgetTracker extends Component {
   render() {
     return (
-      <p>Budget tracker content</p>
+      <div className="budget">
+        <p>Budget tracker content</p>
+      </div>
     )
   }
 }
