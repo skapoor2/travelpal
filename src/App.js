@@ -1,25 +1,45 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Itinerary from "./Components/itinerary";
+import PackingList from "./Components/packingList";
+import BudgetTracker from "./Components/budgetTracker";
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <ul>
+            <li>
+              <Link to="/itinerary">Intinerary</Link>
+            </li>
+            <li>
+              <Link to="/packing">Packing List</Link>
+            </li>
+            <li>
+              <Link to="/budget">Budget Tracker</Link>
+            </li>
+          </ul>
+
+          <hr />
+
+          <Switch>
+            <Route exact path="/itinerary">
+              <Itinerary />
+            </Route>
+            <Route path="/packing">
+              <PackingList />
+            </Route>
+            <Route path="/budget">
+              <BudgetTracker />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
