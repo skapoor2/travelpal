@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './home.css';
-import { Card } from 'react-bootstrap';
+import { Card, CardDeck } from 'react-bootstrap';
 import picture from '../img/yosemite.jpg'
 
 class Home extends Component {
@@ -10,36 +10,40 @@ class Home extends Component {
         <h1>My Trips</h1>
         <h2>Upcoming Trips</h2>
         <div className="row">
-          <Card classname="card" style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={picture} />
-            <Card.Body>
-              <Card.Title>Yosemite</Card.Title>
-              <Card.Text>
-                Dec. 21 - Dec. 25, 2020
-              </Card.Text>
-            </Card.Body>
-          </Card>
+          <CardDeck>
+            <Card classname="card">
+              <Card.Img classname="card-img" variant="top" src={picture} />
+              <Card.Body>
+                <Card.Title classname="card-title">Yosemite</Card.Title>
+                <Card.Text classname="card-text">
+                  Dec. 21 - Dec. 25, 2020
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </CardDeck>
         </div>
         <h2>Past Trips</h2>
         <div className="row">
-          <Card classname="card" style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={picture} />
-            <Card.Body>
-              <Card.Title>Yosemite</Card.Title>
-              <Card.Text>
-                Dec. 21 - Dec. 25, 2020
-              </Card.Text>
-            </Card.Body>
-          </Card>
-          <Card classname="card" style={{ width: '18rem' }}>
-            <Card.Img variant="top" src={picture} />
-            <Card.Body>
-              <Card.Title>Yosemite</Card.Title>
-              <Card.Text>
-                Dec. 21 - Dec. 25, 2020
-              </Card.Text>
-            </Card.Body>
-          </Card>
+          <CardDeck>
+            <Card classname="card">
+              <Card.Img variant="top" src={picture} />
+              <Card.Body>
+                <Card.Title classname="card-title">Yosemite</Card.Title>
+                <Card.Text classname="card-text">
+                  Dec. 21 - Dec. 25, 2020
+                </Card.Text>
+              </Card.Body>
+            </Card>
+            <Card classname="card">
+              <Card.Img variant="top" src={picture} />
+              <Card.Body>
+                <Card.Title classname="card-title">Yosemite</Card.Title>
+                <Card.Text classname="card-text">
+                  Dec. 21 - Dec. 25, 2020
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </CardDeck>
         </div>
       </div>
     )
