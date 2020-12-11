@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, ListGroup, Table, Button, Form } from 'react-bootstrap';
-import './Itinerary.css';
+import './itinerary.css';
 
 class Itinerary extends Component {
   render() {
