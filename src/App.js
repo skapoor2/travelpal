@@ -3,11 +3,11 @@ import './App.css';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar, Nav } from 'react-bootstrap'
 
-import Home from "./Components/Home";
-import Calendar from "./Components/Calendar";
-import PackingList from "./Components/PackingList";
-import Itinerary from "./Components/Itinerary";
-import BudgetTracker from "./Components/BudgetTracker";
+import Home from "./Components/home/Home";
+import Calendar from "./Components/calendar/Calendar";
+import PackingList from "./Components//packinglist/PackingList";
+import Itinerary from "./Components/itinerary/Itinerary";
+import BudgetTracker from "./Components/budgettracker/BudgetTracker";
 
 class App extends Component {
   render() {

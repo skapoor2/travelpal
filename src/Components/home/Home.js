@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './home.css';
 import { Card, CardDeck } from 'react-bootstrap';
-import picture from '../img/yosemite.jpg'
+import picture from './img/yosemite.jpg';
 
 class Home extends Component {
   render() {
