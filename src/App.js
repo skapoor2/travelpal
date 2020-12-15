@@ -8,7 +8,7 @@ import Calendar from "./Components/calendar/Calendar";
 import PackingList from "./Components//packinglist/PackingList";
 import Itinerary from "./Components/itinerary/Itinerary";
 import BudgetTracker from "./Components/budgettracker/BudgetTracker";
-import Picture from "./logo.png";
+import Logo from "./logo.png";
 
 
 class App extends Component {
@@ -17,7 +17,7 @@ class App extends Component {
       <div className="App">
         <Router>
           <Navbar className="navbar" expand="lg" sticky="top">
-            <Navbar.Brand className="nav-brand" href="/"><img src= {Picture} width = "300" height = "auto"/></Navbar.Brand>
+          <Navbar.Brand className="nav-brand" href="/"><img className="nav-logo" src= {Logo} alt="Travel Pal Logo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">

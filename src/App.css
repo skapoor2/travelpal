@@ -4,17 +4,17 @@
 
 .navbar {
   background: white;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0,2);
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 0em;
 }
 
-.nav-brand {
-  color: white !important;
-  font-weight: 800;
-  font-size: 24px;
+.nav-logo {
+  height: 80px;
+  width: auto;
+  padding-left: 1em;
 }
 
 .nav-link {
-  color: black !important;
   font-size: 18px;
   margin-left: 1em;
 }
