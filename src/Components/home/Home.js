@@ -11,11 +11,11 @@ class Home extends Component {
         <h2>Upcoming Trips</h2>
         <div className="row">
           <CardDeck>
-            <Card classname="card">
-              <Card.Img classname="card-img" variant="top" src={picture} />
+            <Card className="card">
+              <Card.Img className="card-img" variant="top" src={picture} />
               <Card.Body>
-                <Card.Title classname="card-title">Yosemite</Card.Title>
-                <Card.Text classname="card-text">
+                <Card.Title className="card-title">Yosemite</Card.Title>
+                <Card.Text className="card-text">
                   Dec. 21 - Dec. 25, 2020
                 </Card.Text>
               </Card.Body>
@@ -25,20 +25,20 @@ class Home extends Component {
         <h2>Past Trips</h2>
         <div className="row">
           <CardDeck>
-            <Card classname="card">
-              <Card.Img variant="top" src={picture} />
+            <Card className="card">
+              <Card.Img className="card-img" variant="top" src={picture} />
               <Card.Body>
-                <Card.Title classname="card-title">Yosemite</Card.Title>
-                <Card.Text classname="card-text">
+                <Card.Title className="card-title">Yosemite</Card.Title>
+                <Card.Text className="card-text">
                   Dec. 21 - Dec. 25, 2020
                 </Card.Text>
               </Card.Body>
             </Card>
-            <Card classname="card">
-              <Card.Img variant="top" src={picture} />
+            <Card className="card">
+              <Card.Img className="card-img" variant="top" src={picture} />
               <Card.Body>
-                <Card.Title classname="card-title">Yosemite</Card.Title>
-                <Card.Text classname="card-text">
+                <Card.Title className="card-title">Yosemite</Card.Title>
+                <Card.Text className="card-text">
                   Dec. 21 - Dec. 25, 2020
                 </Card.Text>
               </Card.Body>

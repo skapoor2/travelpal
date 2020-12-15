@@ -4,5 +4,15 @@
 }
 
 p {
-    font-size: 20px;
+    font-size: 24px;
+}
+
+.amount {
+    color: green;
+    font-weight: 600;
+}
+
+Button {
+    width: 8em;
+    margin: 1em;
 }
