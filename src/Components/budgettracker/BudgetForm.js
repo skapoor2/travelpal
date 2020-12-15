@@ -33,10 +33,10 @@ const BudgetForm = ({ name, amount, handleName, handleAmount, handleSubmitForm, 
         />
       </Col>
   </Form.Group>
-  <Button type="submit" color="primary" onClick={handleSubmitForm}>
+  <Button className="button" type="submit" color="primary" onClick={handleSubmitForm}>
     Add
   </Button>
-  <Button variant="danger" type='submit' color='danger' onClick={handleClearExpenses}>
+  <Button className="button" variant="danger" type='submit' color='danger' onClick={handleClearExpenses}>
     Clear
   </Button>
 </Form>

@@ -30,12 +30,15 @@ function BudgetTracker() {
       setName('')
       setAmount('')
     } else {
-      console.log('Invalid expense name or the amount')
+      alert('Invalid expense name or amount!')
     }
   }
 
   const handleClearExpenses = () => {
-    setExpenses([])
+    if ( expenses.length > 0 )
+      setExpenses([])
+    else
+      alert('There are no expenses logged!')
   }
 
   useEffect(() => {
