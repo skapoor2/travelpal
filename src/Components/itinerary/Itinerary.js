@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React, { Component } from 'react';
-import { Container, Row, Col, ListGroup, Table, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Table, Button, Form, Modal } from 'react-bootstrap';
 import './itinerary.css';
 
 class Itinerary extends Component {
@@ -29,7 +29,7 @@ class Itinerary extends Component {
   updateEndingDate(value){
     this.setState({endingDate:value});
   }
-
+  
   updateStartingTime(value){
     this.setState({startingTime:value});
   }
@@ -77,8 +77,8 @@ class Itinerary extends Component {
       const allItineraryData = [...this.state.allItineraryData];
 
       const dateKey = startDate.format("dddd, MMM D, YYYY");
-
-
+      
+      
 
       //if empty/first item entered, make Dates object and add to allItineraryData
       if (allItineraryData.length === 0){
@@ -92,7 +92,7 @@ class Itinerary extends Component {
       else{
         //else iterate through allItineraryData to check if heading date already exists
         var isAdded= false;
-
+        
         for (var i = 0; i < allItineraryData.length; i++) {
           // if Dates.date matches the dateKey, push entry into its allEntries array
           if (allItineraryData[i].date === dateKey){
@@ -112,13 +112,13 @@ class Itinerary extends Component {
           };
           allItineraryData.push(Dates);
         }
-
+      
       }
 
-      //sorts the entire allItineraryData so that the dates show up chronologically
+      //sorts the entire allItineraryData so that the dates show up chronologically 
       allItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
 
-
+      
       this.setState({
         allItineraryData,
         title:"",
@@ -130,8 +130,8 @@ class Itinerary extends Component {
       });
     }
 
-
-
+    
+    
   }
 
   deleteEntry(dateValue, keyId){
@@ -169,17 +169,51 @@ class Itinerary extends Component {
     this.setState({
       allItineraryData:unchangedItineraryData
     });
-
+    
 
   }
 
+
+
+   openModal(dateValue, keyId){
+    const allItineraryData = [...this.state.allItineraryData];
+
+    const dateObjectToChange = allItineraryData.find((value) => value.date === dateValue);
+
+    const dateEntryToChange = dateObjectToChange.allEntries.find((entry) => entry.entryId === keyId);
+
+
+
+    var show = true;
+
+    const handleClose = () => show = false;
+
+    return (
+      <Modal show={show} onHide={handleClose} centered backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Entry</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Hello
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    )
+  }
 
 
   render() {
     return (
       <div className="itinerary">
         <h1>Itinerary</h1>
-
+       
         <Container>
           <Row>
             <Col md={8}>
@@ -205,16 +239,16 @@ class Itinerary extends Component {
                               <td >{entry.entryStartTime}</td>
                               <td >{entry.entryEndTime}</td>
                               <td >
-                                <Button>Edit</Button> {' '}
+                                <Button onClick = { () => this.openModal(item.date, entry.entryId)}>Edit</Button> {' '}
                                 <Button onClick = { ()=> this.deleteEntry(item.date, entry.entryId)}>Delete</Button>
                               </td>
-
+                              
                             </tr>
                             <tr>
                               <td ></td>
                               <td colSpan="4">{entry.entryDescription}</td>
                             </tr>
-
+                          
                           </>
                         )})}
                       </tbody>
@@ -229,7 +263,7 @@ class Itinerary extends Component {
               <Form>
                 <Form.Group>
                   <Form.Label>Title</Form.Label>
-                  <Form.Control
+                  <Form.Control 
                     value={this.state.title}
                     onChange = {item => this.updateTitle(item.target.value)}
                     required
@@ -238,7 +272,7 @@ class Itinerary extends Component {
 
                 <Form.Group>
                   <Form.Label>Starting Date</Form.Label>
-                  <Form.Control
+                  <Form.Control 
                     type="date"
                     value={this.state.startingDate}
                     onChange = {item => this.updateStartingDate(item.target.value)}
@@ -248,7 +282,7 @@ class Itinerary extends Component {
 
                 <Form.Group>
                   <Form.Label>Ending Date</Form.Label>
-                  <Form.Control
+                  <Form.Control 
                     type="date"
                     value={this.state.endingDate}
                     onChange = {item => this.updateEndingDate(item.target.value)}
@@ -258,7 +292,7 @@ class Itinerary extends Component {
 
                 <Form.Group>
                   <Form.Label>Starting Time</Form.Label>
-                  <Form.Control
+                  <Form.Control 
                     type="time"
                     value={this.state.startingTime}
                     onChange = {item => this.updateStartingTime(item.target.value)}
@@ -268,7 +302,7 @@ class Itinerary extends Component {
 
                 <Form.Group>
                   <Form.Label>Ending Time</Form.Label>
-                  <Form.Control
+                  <Form.Control 
                     type="time"
                     value={this.state.endingTime}
                     onChange = {item => this.updateEndingTime(item.target.value)}
@@ -278,7 +312,7 @@ class Itinerary extends Component {
 
                 <Form.Group>
                   <Form.Label>Description</Form.Label>
-                  <Form.Control
+                  <Form.Control 
                     as="textarea"
                     value={this.state.description}
                     onChange = {item => this.updateDescription(item.target.value)}
