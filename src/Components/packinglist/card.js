@@ -16,14 +16,16 @@ class ToDoItemList extends React.Component {
     }
 
     updateTaskList = (taskValue) => {
+        if (taskValue !== ''){
         const prevTaskList = this.state.taskList.slice();
         const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
         const computeUpdatedProgress = this.computeProgress(updatedTaskList);
-
         this.setState({
             progress: computeUpdatedProgress,
             taskList: updatedTaskList,
-        })
+        })} else {
+        alert('Invalid Item');
+        }
     }
 
     computeProgress(taskList) {
@@ -43,10 +45,11 @@ class ToDoItemList extends React.Component {
         const completedTasks = prevTaskList.map(task => {
             if(task.key === key) {
                 task.completed = !task.completed;
+                //task.variant = "light"
             }
+            //task.variant = "success"
             return task;
         });
-        
         const computeUpdatedProgress = this.computeProgress(completedTasks);
 
         this.setState({
@@ -57,12 +60,17 @@ class ToDoItemList extends React.Component {
 
     handleCompletedTasks = () => {
         const prevTaskList = this.state.taskList.slice();
+        const completed = prevTaskList.filter(task => task.completed);
         const unCompletedTasks = prevTaskList.filter(task => !task.completed);
-
+        if (completed.length !== 0){
         this.setState({
             taskList: unCompletedTasks,
             progress: 0
-        })
+        })}
+        else {
+            alert("There are no completed items");
+        }
+        console.log(this.state);
     }
 
     render() {
