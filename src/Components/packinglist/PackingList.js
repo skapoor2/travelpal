@@ -1,57 +1,16 @@
 import React, { Component } from 'react';
 import { ListGroup, Card, Form, Button, Col } from 'react-bootstrap';
+import ToDoItemList from './card.js';
 import './packingList.css';
 
-class PackingList extends Component {
-  /*constructor(props){
-    super(props);
 
-    this.state = {
-      list: [],
-      pendingItem: ""
-    };
-  }
-  handleItemInput = e => {
-    this.setState({
-      pendingItem: e.target.value
-    });
-  }
-  newItemSubmitHandler = e => {
-    e.preventDefault();
-    this.setState({
-      list:[
-        {
-          name:this.state.pendingItem,
-        },
-        ...this.state.list
-      ],
-      pendingItem:""
-    });
-  };*/
-  
+class PackingList extends Component {
   render() {
     return (
       <div className="packing">
         <h1>Packing list content</h1>
-        {/**<form onSubmit={this.newItemSubmitHandler} className="todoinput">
-          <input 
-            className="input"
-            type="text"
-            onChange={this.handleItemInput}
-            value={this.state.pendingItem}
-            placeholder="Add an item"
-            />
-            <button type="submit" name="submit" value="submit">Add</button>
-        </form>
-        <div>{this.state.pendingItem}</div>
-        <ul>
-        {props.list.map((item, index) => (
-          <ListItem
-            key={index}
-            item={item.name}
-          />
-        ))}
-      </ul>**/}
+        <ToDoItemList />
+        {/**<p style={{textDecorationLine: 'line-through', textDecorationStyle: 'solid'}}>Solid line-through</p>
         <Card style={{ width: '23rem' }}>
           <Card.Header>Category</Card.Header>
           <ListGroup variant="flush">
@@ -66,9 +25,10 @@ class PackingList extends Component {
                 <Col sm="auto"><Button class="submit"> add item</Button>
                 </Col></Form.Row></Form></ListGroup.Item>
           </ListGroup>
-    </Card>
+    </Card>*/}
       </div>
     )
   }
-}
+};
 export default PackingList;
+

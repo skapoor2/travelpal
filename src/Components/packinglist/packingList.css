@@ -5,3 +5,7 @@ p {
 .packing {
     padding: 3em;
 }
+
+Form {
+    align-content: right;
+}
