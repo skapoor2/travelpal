@@ -12,7 +12,7 @@ class ListItems extends Component {
 
     createListItems = (task) => {
     return (<ListGroupItem 
-        bsStyle={task.completed ? "success" : "danger"} 
+        variant={task.completed ? "success" : "light"} 
         key={task.key} 
         className="taskItem" 
         onClick={() => {this.handleClick(task.key)} }>{task.task}</ListGroupItem>);
