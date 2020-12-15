@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col, ListGroup, Table, Button, Form, Modal } from 'react-bootstrap';
 import './itinerary.css';
 
+
 class Itinerary extends Component {
 
   constructor(props){
@@ -16,6 +17,17 @@ class Itinerary extends Component {
       endingTime:"",
       description:""
     };
+  }
+
+  componentDidMount(){
+    const itineraryData = JSON.parse(localStorage.getItem("all_itinerary_data"));
+    console.log(itineraryData);
+    if (localStorage.getItem("all_itinerary_data")) {
+      this.setState({
+        allItineraryData:itineraryData
+      })
+    }
+
   }
 
   updateTitle(value){
@@ -118,6 +130,7 @@ class Itinerary extends Component {
       //sorts the entire allItineraryData so that the dates show up chronologically 
       allItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
 
+      localStorage.setItem("all_itinerary_data", JSON.stringify(allItineraryData));
       
       this.setState({
         allItineraryData,
@@ -128,6 +141,8 @@ class Itinerary extends Component {
         endingTime:"",
         description:""
       });
+
+      
     }
 
     
@@ -165,6 +180,9 @@ class Itinerary extends Component {
 
     unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
 
+    localStorage.removeItem("all_itinerary_data");
+
+    localStorage.setItem("all_itinerary_data", JSON.stringify(unchangedItineraryData));
 
     this.setState({
       allItineraryData:unchangedItineraryData
