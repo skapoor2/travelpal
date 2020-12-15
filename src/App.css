@@ -3,7 +3,8 @@
 }
 
 .navbar {
-  background: #316bb6;
+  background: white;
+  
 }
 
 .nav-brand {
@@ -13,7 +14,7 @@
 }
 
 .nav-link {
-  color: white !important;
+  color: black !important;
   font-size: 18px;
   margin-left: 1em;
 }
