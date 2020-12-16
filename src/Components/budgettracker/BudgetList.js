@@ -4,9 +4,9 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap'
 const BudgetList = ({ expenses }) => (
   <div>
     <ListGroup>
-      {expenses.map(item => (
-        <ListGroupItem key={item.id}>
-          {item.name} - ${item.amount}
+      {expenses.map(expense => (
+        <ListGroupItem key={expense.id}>
+          {expense.name} - ${expense.amount} ({expense.category})
         </ListGroupItem>
       ))}
     </ListGroup>

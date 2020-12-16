@@ -1,45 +1,58 @@
 import React from 'react';
 import { Form, Col, Row, Button } from 'react-bootstrap';
 
-const BudgetForm = ({ name, amount, handleName, handleAmount, handleSubmitForm, handleClearExpenses }) => (
+const BudgetForm = ({ name, amount, category, handleName, handleAmount, handleCategory, handleSubmitForm }) => (
   <Form>
     <Form.Group as={Row}>
-      <Form.Label column sm="2">
+      <Form.Label>
         Name of Expense
       </Form.Label>
-      <Col sm="6">
-        <Form.Control 
-          type="text" 
-          name="name"
-          id="expenseName"
-          placeholder="Expense description"
-          value={name}
-          onChange={handleName}
-        />
-      </Col>
-  </Form.Group>
-  <Form.Group as={Row}>
-      <Form.Label column sm="2">
+      <Form.Control 
+        type="text" 
+        name="name"
+        id="expenseName"
+        placeholder="Expense description"
+        value={name}
+        onChange={handleName}
+      />
+    </Form.Group>
+    <Form.Group as={Row}>
+      <Form.Label>
         $ Amount
       </Form.Label>
-      <Col sm="6">
-        <Form.Control 
-          type="number"
-          name="amount"
-          id="expenseAmount"
-          placeholder="0.00"
-          value={amount}
-          onChange={handleAmount}
-        />
-      </Col>
-  </Form.Group>
-  <Button className="button" type="submit" color="primary" onClick={handleSubmitForm}>
-    Add
-  </Button>
-  <Button className="button" variant="danger" type='submit' color='danger' onClick={handleClearExpenses}>
-    Clear
-  </Button>
-</Form>
+      <Form.Control 
+        type="number"
+        name="amount"
+        id="expenseAmount"
+        placeholder="0.00"
+        value={amount}
+        onChange={handleAmount}
+      />
+    </Form.Group>
+    <Form.Group as={Row}>
+      <Form.Label>
+        Category
+      </Form.Label>
+      <Form.Control
+        as="select"
+        defaultValue="Other"
+        name="category"
+        id="expenseCategory"
+        value={category.value}
+        onChange={handleCategory}
+      >
+        <option value="Food">Food</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="Transportation">Transportation</option>
+        <option value="Lodging">Lodging</option>
+        <option value="Other">Other</option>
+      </Form.Control>
+    </Form.Group>
+    <Button className="button" type="submit" color="primary" onClick={handleSubmitForm}>
+      Add Entry
+    </Button>
+  </Form>
 )
 
 export default BudgetForm
