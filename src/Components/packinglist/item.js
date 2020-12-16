@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ListGroup, ListGroupItem, Form} from "react-bootstrap";
+import {ListGroup, ListGroupItem, Button, Form} from "react-bootstrap";
 //import packingLocalStorage from "src/services/packingLocalStorage.js"
 //import styled from "styled-components";
 
@@ -27,8 +27,7 @@ class ListItems extends Component {
                 ))}*/
 
     render() {
-        //console.log(JSON.parse(localStorage.getItem("taskList")))
-        const tasks = JSON.parse(localStorage.getItem("taskList")).map(this.createListItems);
+        const tasks = this.props.tasks.map(this.createListItems);
         return (
             <Form>
             <ListGroup className="taskItems">

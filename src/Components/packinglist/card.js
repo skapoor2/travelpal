@@ -1,44 +1,47 @@
 import React from "react";
-import { ProgressBar, Button } from "react-bootstrap";
+import { Row, Card, ProgressBar, Button } from "react-bootstrap";
 import AddTask from "./edit.js";
 import ListItems from "./item.js";
 import './card.css';
 
 class ToDoItemList extends React.Component {
-    //componentDidMount
+
     constructor(props) {
         super(props)
         this.state = {
-            taskList: JSON.parse(localStorage.getItem("taskList")),
+            taskList: [],
             progress: 0 
         }
-        //localStorage.clear();
     }
 
+    componentDidMount(){
+        const packingData = JSON.parse(localStorage.getItem("taskList"));
+        const packingProgress = JSON.parse(localStorage.getItem("progress"));
+        console.log(packingData);
+        if (localStorage.getItem("taskList")) {
+          this.setState({
+            taskList:packingData,
+            progress:packingProgress
+          })
+        }
+      }
+
     updateTaskList = (taskValue) => {
-        //cons prevTaskList = [];
         if (taskValue !== ''){
-            if (localStorage.getItem('taskList')==null){
-                const prevTaskList = [];
-                const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
-                const computeUpdatedProgress = this.computeProgress(updatedTaskList);
-                localStorage.setItem('taskList', JSON.stringify(updatedTaskList))
-                localStorage.setItem('progress', JSON.stringify(computeUpdatedProgress));
-            } else {
-                const prevTaskList = JSON.parse(localStorage.getItem('taskList'))
-                const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
-                const computeUpdatedProgress = this.computeProgress(updatedTaskList);
-                localStorage.setItem('taskList', JSON.stringify(updatedTaskList))
-                localStorage.setItem('progress', JSON.stringify(computeUpdatedProgress));
-            }
-        //const prevTaskList = this.state.taskList.slice();
+        const prevTaskList = this.state.taskList.slice();
+        const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
+        const computeUpdatedProgress = this.computeProgress(updatedTaskList);
         this.setState({
-            progress: JSON.parse(localStorage.getItem('progress')),
-            taskList: JSON.parse(localStorage.getItem('taskList')),
-        })} else {
+            progress: computeUpdatedProgress,
+            taskList: updatedTaskList,
+        })
+        localStorage.setItem("taskList", JSON.stringify(updatedTaskList))
+        localStorage.setItem("progress", JSON.stringify(computeUpdatedProgress))
+        } else {
         alert('Invalid Item');
         }
     }
+
     computeProgress(taskList) {
         let completed = 0;
         taskList.forEach(task => {
@@ -67,6 +70,8 @@ class ToDoItemList extends React.Component {
             progress: computeUpdatedProgress,
             taskList: completedTasks,
         })
+        localStorage.setItem("taskList", JSON.stringify(completedTasks))
+        localStorage.setItem("progress", JSON.stringify(computeUpdatedProgress))
     }
 
     handleCompletedTasks = () => {
@@ -77,13 +82,13 @@ class ToDoItemList extends React.Component {
         this.setState({
             taskList: unCompletedTasks,
             progress: 0
-        });
+        })
         localStorage.setItem("taskList", JSON.stringify(unCompletedTasks))
         localStorage.setItem("progress", JSON.stringify(0))}
         else {
             alert("There are no completed items");
         }
-        console.log(this.state);
+        //console.log(this.state);
     }
 
     render() {
