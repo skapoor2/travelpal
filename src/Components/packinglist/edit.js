@@ -35,12 +35,12 @@ class AddTask extends React.Component {
             <Form inline onSubmit={this.handleSubmit}>
                 
                 <Form.Row>
-                <Col lg="auto" controlId="formBasicEmail">
-                    <Form.Group controlId="formInlineName">
+                <Col lg="auto">
+                    <Form.Group>
                     <Form.Control type="text" placeholder="Add Task" value={this.state.taskValue} onChange={this.handleChange} />
                     </Form.Group>
                 </Col>
-                <Col lg="auto"><Button bsStyle = "primary" type="submit"> add item</Button>
+                <Col lg="auto"><Button variant = "primary" type="submit"> add item</Button>
                 </Col></Form.Row>
 
                 
