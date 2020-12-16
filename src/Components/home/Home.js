@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import './home.css';
-import { Card, CardDeck, Container } from 'react-bootstrap';
+import { Card, CardDeck, Container, Form } from 'react-bootstrap';
 import picture from './img/yosemite.jpg';
 
 class Home extends Component {
+  /*constructor(props){
+    super(props);
+    this.state = {
+
+    }
+  }*/
   render() {
     return (
       <div className="home">
         <h1>My Trip</h1>
-        <p>input form for trip information</p>
+        {/**<Form>
+          <Form.Group>
+            <Form.Label>Name of Trip</Form.Label>
+            <Form.Control>
+            </Form.Control>
+          </Form.Group>
+        </Form>*/}
         <p>upload image file</p>
         <Container className="cards">
           <CardDeck>

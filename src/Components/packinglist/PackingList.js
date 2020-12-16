@@ -115,7 +115,7 @@ class ToDoItemList extends React.Component {
                             <div className="taskProgressBar">
                             <h4>Percentage of Items Packed</h4>
                                 <ProgressBar className="progressbar" now={this.state.progress} label={`${this.state.progress}%`} />
-                                <div className="button"><Button variant="danger" onClick={this.handleCompletedTasks}>Remove Completed</Button></div>
+                                <div><Button className="removecomp" variant="danger" onClick={this.handleCompletedTasks}>Remove Completed</Button></div>
                             </div>
                         </div>
 
