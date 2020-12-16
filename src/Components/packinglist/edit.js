@@ -1,4 +1,4 @@
-import { Button, Form, FormGroup, FormControl, Col } from "react-bootstrap";
+import { Button, Form, Col } from "react-bootstrap";
 import React from 'react';
 
 class AddTask extends React.Component {
@@ -41,7 +41,8 @@ class AddTask extends React.Component {
                     </Form.Group>
                 </Col>
                 <Col lg="auto"><Button variant = "primary" type="submit"> add item</Button>
-                </Col></Form.Row>
+                </Col>
+            </Form.Row>
 
                 
 
