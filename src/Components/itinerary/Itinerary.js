@@ -92,7 +92,9 @@ class Itinerary extends Component {
           entryStartDay: startDate.format("dddd, MMM D, YYYY"),
           entryStartTime: startDate.format('h:mm a'),
           entryEndDay: endDate.format("dddd, MMM D, YYYY"),
-          entryEndTime: endDate.format('h:mm a')
+          entryEndTime: endDate.format('h:mm a'),
+          entryStart:startDate,
+          entryEnd:endDate
         };
   
         const allItineraryData = [...this.state.allItineraryData];
@@ -324,7 +326,9 @@ class Itinerary extends Component {
           entryStartDay: startDate.format("dddd, MMM D, YYYY"),
           entryStartTime: startDate.format('h:mm a'),
           entryEndDay: endDate.format("dddd, MMM D, YYYY"),
-          entryEndTime: endDate.format('h:mm a')
+          entryEndTime: endDate.format('h:mm a'),
+          entryStart: startDate,
+          entryEnd: endDate
         };
   
         const dateKey = startDate.format("dddd, MMM D, YYYY");
