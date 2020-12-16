@@ -121,7 +121,7 @@ class Itinerary extends Component {
             if (allItineraryData[i].date === dateKey){
               console.log("itin was not empty");
               allItineraryData[i].allEntries.push(entry);
-              allItineraryData[i].allEntries.sort((a,b) => moment(a.entryStartTime).diff(moment(b.entryStartTime))).reverse();
+              //allItineraryData[i].allEntries.sort((a,b) => moment(a.entryStartTime).diff(moment(b.entryStartTime))).reverse();
               isAdded = true;
               break;
             }
@@ -141,6 +141,9 @@ class Itinerary extends Component {
   
         //sorts the entire allItineraryData so that the dates show up chronologically 
         allItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
+        for (var j = 0; j < allItineraryData.length; j++) {
+          allItineraryData[j].allEntries.sort((a,b) => moment(a.entryStart).diff(moment(b.entryStart)));
+        };
   
         localStorage.setItem("all_itinerary_data", JSON.stringify(allItineraryData));
   
@@ -236,64 +239,6 @@ class Itinerary extends Component {
     console.log(this.state.modalKeyId);
     //this.deleteEntry(this.state.modalDateValue, this.state.modalKeyId);
 
-// --------------------------------Delete Section-----------------------------------------------------------------------
-    const thisAllItineraryData = [...this.state.allItineraryData];
-
-    const unchangedItineraryData = thisAllItineraryData.filter(item => item.date !== this.state.modalDateValue);
-    console.log("unchanged");
-    console.log(unchangedItineraryData);
-
-    
-
-    console.log("allItineraryData");
-    console.log(thisAllItineraryData);
-
-    const dateObjectToChange = thisAllItineraryData.find((value) => value.date === this.state.modalDateValue);
-    console.log("thing to change");
-    console.log(dateObjectToChange);
-
-    const newAllEntries = dateObjectToChange.allEntries.filter(item => item.entryId !== this.state.modalKeyId);
-    console.log("newAllentries");
-    console.log(newAllEntries);
-
-    if (newAllEntries.length !== 0){
-      dateObjectToChange.allEntries = newAllEntries;
-      console.log("New object entries");
-      console.log(dateObjectToChange.allEntries);
-
-      unchangedItineraryData.push(dateObjectToChange);
-      console.log("ChangedItineraryData");
-      console.log(unchangedItineraryData);
-
-      
-    }
-    else{
-      console.log("THIS IS AN ISSUE");
-      
-      console.log(unchangedItineraryData);
-
-    }
-    unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
-    console.log("after sort");
-    console.log(unchangedItineraryData);
-
-    localStorage.setItem("all_itinerary_data", JSON.stringify(unchangedItineraryData));
-
-    
-  
-    console.log("allItineraryData");
-    console.log(thisAllItineraryData);
-
-    this.setState({
-      allItineraryData:unchangedItineraryData
-    });
-
-    console.log("this.state.allItineraryData");
-    console.log(this.state.allItineraryData);
-    
-
-// -------------------------Add section---------------------------
-
     if (this.state.title === "" ){
       alert("Please provide a title for your event");
     }
@@ -315,79 +260,149 @@ class Itinerary extends Component {
       console.log(startDate);
 
       if (endDate.isBefore(startDate)){
-        alert("End Date/Time cannot be before Start Date/Time. Please fix before adding entry.")
+        alert("End Date/Time cannot be before Start Date/Time. Please fix before adding entry.");
+        this.openModal(this.state.modalDateValue, this.state.modalKeyId);
       }
-
       else{
-        const entry = {
-          entryId: Math.random(),
-          entryTitle: this.state.title,
-          entryDescription: this.state.description,
-          entryStartDay: startDate.format("dddd, MMM D, YYYY"),
-          entryStartTime: startDate.format('h:mm a'),
-          entryEndDay: endDate.format("dddd, MMM D, YYYY"),
-          entryEndTime: endDate.format('h:mm a'),
-          entryStart: startDate,
-          entryEnd: endDate
-        };
-  
-        const dateKey = startDate.format("dddd, MMM D, YYYY");
-        
-        
-  
-        //if empty/first item entered, make Dates object and add to allItineraryData
-        
-        
-          //else iterate through allItineraryData to check if heading date already exists
-          var isAdded= false;
+            // --------------------------------Delete Section-----------------------------------------------------------------------
+          const thisAllItineraryData = [...this.state.allItineraryData];
+
+          const unchangedItineraryData = thisAllItineraryData.filter(item => item.date !== this.state.modalDateValue);
+          console.log("unchanged");
+          console.log(unchangedItineraryData);
+
+
+
+          console.log("allItineraryData");
+          console.log(thisAllItineraryData);
+
+          const dateObjectToChange = thisAllItineraryData.find((value) => value.date === this.state.modalDateValue);
+          console.log("thing to change");
+          console.log(dateObjectToChange);
+
+          const newAllEntries = dateObjectToChange.allEntries.filter(item => item.entryId !== this.state.modalKeyId);
+          console.log("newAllentries");
+          console.log(newAllEntries);
+
+          if (newAllEntries.length !== 0){
+            dateObjectToChange.allEntries = newAllEntries;
+            console.log("New object entries");
+            console.log(dateObjectToChange.allEntries);
+
+            unchangedItineraryData.push(dateObjectToChange);
+            console.log("ChangedItineraryData");
+            console.log(unchangedItineraryData);
+
+            
+          }
+          else{
+            console.log("THIS IS AN ISSUE");
+            
+            console.log(unchangedItineraryData);
+
+          }
+          unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
+          console.log("after sort");
+          console.log(unchangedItineraryData);
+
+          localStorage.setItem("all_itinerary_data", JSON.stringify(unchangedItineraryData));
+
+
+
+          console.log("allItineraryData");
+          console.log(thisAllItineraryData);
+
+          this.setState({
+            allItineraryData:unchangedItineraryData
+          });
+
+          console.log("this.state.allItineraryData");
+          console.log(this.state.allItineraryData);
+
+
+          // -------------------------Add section---------------------------
+
+
           
-          for (var i = 0; i < unchangedItineraryData.length; i++) {
-            // if Dates.date matches the dateKey, push entry into its allEntries array
-            if (unchangedItineraryData[i].date === dateKey){
-              console.log("itin was not empty");
-              unchangedItineraryData[i].allEntries.push(entry);
-              unchangedItineraryData[i].allEntries.sort((a,b) => moment(a.entryStartTime).diff(moment(b.entryStartTime))).reverse();
-              isAdded = true;
-              break;
-            }
-          }
-          //If dateKey doesn't exist as a Dates.date yet, then it will create a new Dates object and add that to allItineraryData
-          if (!isAdded){
-            console.log("Not in data");
-            const Dates = {
-              date:dateKey,
-              allEntries:[entry]
-            };
-            unchangedItineraryData.push(Dates);
-          }
-          isAdded=false;
-        
-        
-  
-        //sorts the entire allItineraryData so that the dates show up chronologically 
-        unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
-  
-        localStorage.setItem("all_itinerary_data", JSON.stringify(unchangedItineraryData));
-  
-        
-        
-        this.setState({
-          allItineraryData:unchangedItineraryData,
-        });
+              const entry = {
+                entryId: Math.random(),
+                entryTitle: this.state.title,
+                entryDescription: this.state.description,
+                entryStartDay: startDate.format("dddd, MMM D, YYYY"),
+                entryStartTime: startDate.format('h:mm a'),
+                entryEndDay: endDate.format("dddd, MMM D, YYYY"),
+                entryEndTime: endDate.format('h:mm a'),
+                entryStart: startDate,
+                entryEnd: endDate
+              };
 
-      }
+              const dateKey = startDate.format("dddd, MMM D, YYYY");
+              
+              
 
-      
+              //if empty/first item entered, make Dates object and add to allItineraryData
+              
+              
+                //else iterate through allItineraryData to check if heading date already exists
+                var isAdded= false;
+                
+                for (var i = 0; i < unchangedItineraryData.length; i++) {
+                  // if Dates.date matches the dateKey, push entry into its allEntries array
+                  if (unchangedItineraryData[i].date === dateKey){
+                    console.log("itin was not empty");
+                    unchangedItineraryData[i].allEntries.push(entry);
+                    //unchangedItineraryData[i].allEntries.sort((a,b) => moment(a.entryStartTime).diff(moment(b.entryStartTime))).reverse();
+                    isAdded = true;
+                    break;
+                  }
+                }
+                //If dateKey doesn't exist as a Dates.date yet, then it will create a new Dates object and add that to allItineraryData
+                if (!isAdded){
+                  console.log("Not in data");
+                  const Dates = {
+                    date:dateKey,
+                    allEntries:[entry]
+                  };
+                  unchangedItineraryData.push(Dates);
+                }
+                isAdded=false;
+              
+              
+
+              //sorts the entire allItineraryData so that the dates show up chronologically 
+              unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
+
+              for (var j = 0; j < unchangedItineraryData.length; j++) {
+                unchangedItineraryData[j].allEntries.sort((a,b) => moment(a.entryStart).diff(moment(b.entryStart)));
+              };
+
+              localStorage.setItem("all_itinerary_data", JSON.stringify(unchangedItineraryData));
+
+              
+              
+              this.setState({
+                allItineraryData:unchangedItineraryData,
+              });
+
+        } 
+
+    
 
     }
 
-    
-    //this.addEntry();
-    
-    
-    this.handleClose();
 
-  }
+    //this.addEntry();
+
+
+    this.handleClose();
+    
+
+
+
+    }
+
+
+  
 
 
 
