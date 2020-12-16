@@ -1,33 +1,44 @@
 import React from "react";
-import { Row, Card, ProgressBar, Button } from "react-bootstrap";
+import { ProgressBar, Button } from "react-bootstrap";
 import AddTask from "./edit.js";
 import ListItems from "./item.js";
 import './card.css';
 
 class ToDoItemList extends React.Component {
-
+    //componentDidMount
     constructor(props) {
         super(props)
-
         this.state = {
-            taskList: [],
+            taskList: JSON.parse(localStorage.getItem("taskList")),
             progress: 0 
         }
+        //localStorage.clear();
     }
 
     updateTaskList = (taskValue) => {
+        //cons prevTaskList = [];
         if (taskValue !== ''){
-        const prevTaskList = this.state.taskList.slice();
-        const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
-        const computeUpdatedProgress = this.computeProgress(updatedTaskList);
+            if (localStorage.getItem('taskList')==null){
+                const prevTaskList = [];
+                const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
+                const computeUpdatedProgress = this.computeProgress(updatedTaskList);
+                localStorage.setItem('taskList', JSON.stringify(updatedTaskList))
+                localStorage.setItem('progress', JSON.stringify(computeUpdatedProgress));
+            } else {
+                const prevTaskList = JSON.parse(localStorage.getItem('taskList'))
+                const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
+                const computeUpdatedProgress = this.computeProgress(updatedTaskList);
+                localStorage.setItem('taskList', JSON.stringify(updatedTaskList))
+                localStorage.setItem('progress', JSON.stringify(computeUpdatedProgress));
+            }
+        //const prevTaskList = this.state.taskList.slice();
         this.setState({
-            progress: computeUpdatedProgress,
-            taskList: updatedTaskList,
+            progress: JSON.parse(localStorage.getItem('progress')),
+            taskList: JSON.parse(localStorage.getItem('taskList')),
         })} else {
         alert('Invalid Item');
         }
     }
-
     computeProgress(taskList) {
         let completed = 0;
         taskList.forEach(task => {
@@ -45,9 +56,9 @@ class ToDoItemList extends React.Component {
         const completedTasks = prevTaskList.map(task => {
             if(task.key === key) {
                 task.completed = !task.completed;
-                //task.variant = "light"
+                task.variant = "light"
             }
-            //task.variant = "success"
+            task.variant = "success"
             return task;
         });
         const computeUpdatedProgress = this.computeProgress(completedTasks);
@@ -66,7 +77,9 @@ class ToDoItemList extends React.Component {
         this.setState({
             taskList: unCompletedTasks,
             progress: 0
-        })}
+        });
+        localStorage.setItem("taskList", JSON.stringify(unCompletedTasks))
+        localStorage.setItem("progress", JSON.stringify(0))}
         else {
             alert("There are no completed items");
         }
@@ -84,8 +97,8 @@ class ToDoItemList extends React.Component {
                             <AddTask updatedTaskList={this.updateTaskList} handleCompletedTasks={this.handleCompletedTasks} />
                             <div className="taskProgressBar">
                             <h4>Percentage of Items Packed</h4>
-                                <ProgressBar class="progressbar" active now={this.state.progress} label={`${this.state.progress}%`} />
-                                <div class="button"><Button bsStyle="danger" onClick={this.handleCompletedTasks}>Remove Completed</Button></div>
+                                <ProgressBar className="progressbar" now={this.state.progress} label={`${this.state.progress}%`} />
+                                <div className="button"><Button variant="danger" onClick={this.handleCompletedTasks}>Remove Completed</Button></div>
                             </div>
                         </div>
 
