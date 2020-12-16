@@ -1,11 +1,15 @@
 
-import React from "react";
-import { Popover, ProgressBar, Button, OverlayTrigger, Container, Row, Col } from "react-bootstrap";
-import AddTask from "./edit.js";
-import ListItems from "./item.js";
+import React, { Component } from "react";
+import { Popover, ProgressBar, Button, OverlayTrigger, Container, Row } from "react-bootstrap";
+import Edit from "./edit.js";
+import Item from "./item.js";
 import './packingList.css';
 
-class ToDoItemList extends React.Component {
+//Used https://github.com/prabhath6/to-do-list-react-bootstrap/tree/master/src when developing packing list to help with set-up/errors. 
+//It was used as a sort of blueprint for the code for the packing list, with a lot of the helper functions being used to help set up the input system.
+//Several elements like the storage, styling, and even changes to the helper functions took place after using the documentation to build a steady foundation. 
+
+class packingList extends Component {
 
     constructor(props) {
         super(props)
@@ -89,7 +93,6 @@ class ToDoItemList extends React.Component {
         else {
             alert("There are no completed items");
         }
-        //console.log(this.state);
     }
 
 
@@ -104,14 +107,15 @@ class ToDoItemList extends React.Component {
         )
         const PackingList = (
             <div className="packing">
-              <div className="title">
-                <Container fluid><Row>
-              <h1>Packing list content</h1>
-              <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-                <Button className="howtouse" variant="light">How to Use</Button>
+              <div>
+                <Container fluid><Row className="title">
+              <h1>Packing List</h1>
+              <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                <Button className="howtouse" variant="light">?</Button>
               </OverlayTrigger></Row></Container></div>
                         <div className="InputElements">
-                            <AddTask updatedTaskList={this.updateTaskList} handleCompletedTasks={this.handleCompletedTasks} />
+                          <Container className="additem">
+                        <Edit updatedTaskList={this.updateTaskList} handleCompletedTasks={this.handleCompletedTasks} /></Container>
                             <div className="taskProgressBar">
                             <h4>Percentage of Items Packed</h4>
                                 <ProgressBar className="progressbar" now={this.state.progress} label={`${this.state.progress}%`} />
@@ -120,13 +124,10 @@ class ToDoItemList extends React.Component {
                         </div>
 
                         <div className="taskListElements">
-                            <p>List</p>
-                            <ListItems tasks={this.state.taskList} handleTaskClick={this.handleTaskClick} />
+                            <Container className="list">
+                            <p>List of Items</p>
+                            <Item tasks={this.state.taskList} handleTaskClick={this.handleTaskClick} /></Container>
                         </div>
-
-                    {/**</Col>
-                    <Col xsHidden md={4}></Col>
-                    </Row></Card>*/}
             </div>
         );
 
@@ -138,4 +139,4 @@ class ToDoItemList extends React.Component {
     }
 }
 
-export default ToDoItemList;
+export default packingList;

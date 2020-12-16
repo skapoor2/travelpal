@@ -1,11 +1,11 @@
 import { Button, Form, Col } from "react-bootstrap";
 import React from 'react';
+import './packingList.css'; 
 
-class AddTask extends React.Component {
+class Edit extends React.Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             taskValue: ''
         }
@@ -14,7 +14,6 @@ class AddTask extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.updatedTaskList(this.state.taskValue);
-
         this.setState({
             taskValue: ''
         })
@@ -26,21 +25,17 @@ class AddTask extends React.Component {
         })
     }
 
-    /*removeCompletedTasks = () => {
-        this.props.handleCompletedTasks();
-    }*/
 
     render() {
         const formInstance = (
-            <Form inline onSubmit={this.handleSubmit}>
-                
-                <Form.Row>
-                <Col lg="auto">
+            <Form onSubmit={this.handleSubmit}>
+                <Form.Row className="inputstuff">
+                <Col lg={10}>
                     <Form.Group>
                     <Form.Control type="text" placeholder="Add Task" value={this.state.taskValue} onChange={this.handleChange} />
                     </Form.Group>
                 </Col>
-                <Col lg="auto"><Button variant = "primary" type="submit"> add item</Button>
+                <Col lg={2}><Button variant = "dark" type="submit">Add Item</Button>
                 </Col>
             </Form.Row>
 
@@ -58,4 +53,4 @@ class AddTask extends React.Component {
 
 }
 
-export default AddTask;
+export default Edit;
