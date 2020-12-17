@@ -555,7 +555,7 @@ class Itinerary extends Component {
               <Col md={8}>
                 <ListGroup className="dateEntry">
                   {this.state.allItineraryData.map((item) => {return(
-                    <ListGroup.Item key={item.date}>{item.date}
+                    <ListGroup.Item key={item.date}><h5>{item.date}</h5>
                       <Table>
                         <thead>
                           <tr>
