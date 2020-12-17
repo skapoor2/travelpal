@@ -1,3 +1,87 @@
 p {
     font-size: 20px;
 }
+
+.itinerary{
+    padding:3em;
+    
+}
+
+.title{
+    margin-bottom: 1em;
+}
+
+.how-to {
+    border-radius: 50%;
+    width: 40px; 
+    height: 40px; 
+    font-size: 16px;
+    margin-top: 1.5em;
+}
+
+.itineraryForm {
+    border-radius: 20px;
+    padding: 1em;
+    border: 1px solid lightgray;
+    margin-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25em;
+    
+}
+
+.addEntryButton{
+    width: 8em;
+    margin: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+tr{
+    width: 100%;
+}
+
+td{
+    word-break: break-all;
+}
+
+.thIndex{
+    width:5%;
+}
+
+.thTitle{
+    width:30%;
+}
+
+.thStart{
+    width:20%;
+}
+
+.thEnd{
+    width:20%;
+}
+
+.thButtons{
+    width:25%;
+}
+
+.list-group-item{
+    border: 1px solid lightgray;
+    border-radius: 20px;
+    margin-bottom: 1em;
+    
+}
+
+.list-group{
+    margin-top:0;
+    padding:0;
+}
+
+
+svg{
+    margin-right:1.5em;
+    height: 1.5em;
+    width:1.5em;
+}

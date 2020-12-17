@@ -1,7 +1,8 @@
 import moment from 'moment';
 import React, { Component } from 'react';
-import { Container, Row, Col, ListGroup, Table, Button, Form, Modal } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup, Table, Button, Form, Modal, Popover, OverlayTrigger } from 'react-bootstrap';
 import './itinerary.css';
+import * as Icon from 'react-bootstrap-icons';
 
 
 class Itinerary extends Component {
@@ -24,7 +25,7 @@ class Itinerary extends Component {
 
   componentDidMount(){
     const itineraryData = JSON.parse(localStorage.getItem("all_itinerary_data"));
-    console.log(itineraryData);
+    //console.log(itineraryData);
     if (localStorage.getItem("all_itinerary_data")) {
       this.setState({
         allItineraryData:itineraryData
@@ -78,7 +79,7 @@ class Itinerary extends Component {
     else{
       const startDate = moment(this.state.startingDate+ " " +this.state.startingTime, "YYYY-MM-DD hh:mm");
       const endDate = moment(this.state.endingDate+ " "+this.state.endingTime, "YYYY-MM-DD hh:mm");
-      console.log(startDate);
+      //console.log(startDate);
 
       if (endDate.isBefore(startDate)){
         alert("End Date/Time cannot be before Start Date/Time. Please fix before adding entry.")
@@ -105,7 +106,7 @@ class Itinerary extends Component {
   
         //if empty/first item entered, make Dates object and add to allItineraryData
         if (allItineraryData.length === 0){
-          console.log("itin was empty");
+          //console.log("itin was empty");
           const Dates = {
             date:dateKey,
             allEntries:[entry]
@@ -119,7 +120,7 @@ class Itinerary extends Component {
           for (var i = 0; i < allItineraryData.length; i++) {
             // if Dates.date matches the dateKey, push entry into its allEntries array
             if (allItineraryData[i].date === dateKey){
-              console.log("itin was not empty");
+              //console.log("itin was not empty");
               allItineraryData[i].allEntries.push(entry);
               //allItineraryData[i].allEntries.sort((a,b) => moment(a.entryStartTime).diff(moment(b.entryStartTime))).reverse();
               isAdded = true;
@@ -128,7 +129,7 @@ class Itinerary extends Component {
           }
           //If dateKey doesn't exist as a Dates.date yet, then it will create a new Dates object and add that to allItineraryData
           if (!isAdded){
-            console.log("Not in data");
+            //console.log("Not in data");
             const Dates = {
               date:dateKey,
               allEntries:[entry]
@@ -175,28 +176,28 @@ class Itinerary extends Component {
     const allItineraryData = [...this.state.allItineraryData];
 
     const unchangedItineraryData = allItineraryData.filter(item => item.date !== dateValue);
-    console.log("unchanged");
-    console.log(unchangedItineraryData);
+    //console.log("unchanged");
+    //console.log(unchangedItineraryData);
 
-    console.log("allItineraryData");
-    console.log(allItineraryData);
+    //console.log("allItineraryData");
+    //console.log(allItineraryData);
 
     const dateObjectToChange = allItineraryData.find((value) => value.date === dateValue);
-    console.log("thing to change");
-    console.log(dateObjectToChange);
+    //console.log("thing to change");
+    //console.log(dateObjectToChange);
 
     const newAllEntries = dateObjectToChange.allEntries.filter(item => item.entryId !== keyId);
-    console.log("newAllentries");
-    console.log(newAllEntries);
+    //console.log("newAllentries");
+    //console.log(newAllEntries);
 
     if (newAllEntries.length !== 0){
       dateObjectToChange.allEntries = newAllEntries;
-      console.log("New object entries");
-      console.log(dateObjectToChange.allEntries);
+      //console.log("New object entries");
+      //console.log(dateObjectToChange.allEntries);
 
       unchangedItineraryData.push(dateObjectToChange);
-      console.log("ChangedItineraryData");
-      console.log(unchangedItineraryData);
+      //console.log("ChangedItineraryData");
+      //console.log(unchangedItineraryData);
     }
 
     unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
@@ -209,8 +210,8 @@ class Itinerary extends Component {
       allItineraryData:unchangedItineraryData
     });
     
-    console.log("allItineraryData");
-    console.log(allItineraryData);
+    //console.log("allItineraryData");
+    //console.log(allItineraryData);
 
   }
 
@@ -233,10 +234,10 @@ class Itinerary extends Component {
     //Now I know it isn't good practice to reuse code like I did in this handleSave() but I needed to change some parts of the delete entry and add entry in order for the localStorage 
     //and this.state.allItinerarydata to be in sync or else calling both functions (which i wanted to do) would overlap the localStorage and this.state.allItineraryData
 
-    console.log("ModalDateValue:")
-    console.log(this.state.modalDateValue);
-    console.log("ModalKeyId:");
-    console.log(this.state.modalKeyId);
+    //console.log("ModalDateValue:")
+    //console.log(this.state.modalDateValue);
+    //console.log("ModalKeyId:");
+    //console.log(this.state.modalKeyId);
     //this.deleteEntry(this.state.modalDateValue, this.state.modalKeyId);
 
     if (this.state.title === "" ){
@@ -257,7 +258,7 @@ class Itinerary extends Component {
     else{
       const startDate = moment(this.state.startingDate+ " " +this.state.startingTime, "YYYY-MM-DD hh:mm");
       const endDate = moment(this.state.endingDate+ " "+this.state.endingTime, "YYYY-MM-DD hh:mm");
-      console.log(startDate);
+      //console.log(startDate);
 
       if (endDate.isBefore(startDate)){
         alert("End Date/Time cannot be before Start Date/Time. Please fix before adding entry.");
@@ -268,56 +269,56 @@ class Itinerary extends Component {
           const thisAllItineraryData = [...this.state.allItineraryData];
 
           const unchangedItineraryData = thisAllItineraryData.filter(item => item.date !== this.state.modalDateValue);
-          console.log("unchanged");
-          console.log(unchangedItineraryData);
+          //console.log("unchanged");
+          //console.log(unchangedItineraryData);
 
 
 
-          console.log("allItineraryData");
-          console.log(thisAllItineraryData);
+          //console.log("allItineraryData");
+          //console.log(thisAllItineraryData);
 
           const dateObjectToChange = thisAllItineraryData.find((value) => value.date === this.state.modalDateValue);
-          console.log("thing to change");
-          console.log(dateObjectToChange);
+          //console.log("thing to change");
+          //console.log(dateObjectToChange);
 
           const newAllEntries = dateObjectToChange.allEntries.filter(item => item.entryId !== this.state.modalKeyId);
-          console.log("newAllentries");
-          console.log(newAllEntries);
+          //console.log("newAllentries");
+          //console.log(newAllEntries);
 
           if (newAllEntries.length !== 0){
             dateObjectToChange.allEntries = newAllEntries;
-            console.log("New object entries");
-            console.log(dateObjectToChange.allEntries);
+            //console.log("New object entries");
+            //console.log(dateObjectToChange.allEntries);
 
             unchangedItineraryData.push(dateObjectToChange);
-            console.log("ChangedItineraryData");
-            console.log(unchangedItineraryData);
+            //console.log("ChangedItineraryData");
+            //console.log(unchangedItineraryData);
 
             
           }
           else{
-            console.log("THIS IS AN ISSUE");
+            //console.log("THIS IS AN ISSUE");
             
-            console.log(unchangedItineraryData);
+            //console.log(unchangedItineraryData);
 
           }
           unchangedItineraryData.sort((a,b)=>moment(a.date).diff(moment(b.date)));
-          console.log("after sort");
-          console.log(unchangedItineraryData);
+          //console.log("after sort");
+          //console.log(unchangedItineraryData);
 
           localStorage.setItem("all_itinerary_data", JSON.stringify(unchangedItineraryData));
 
 
 
-          console.log("allItineraryData");
-          console.log(thisAllItineraryData);
+          //console.log("allItineraryData");
+          //console.log(thisAllItineraryData);
 
           this.setState({
             allItineraryData:unchangedItineraryData
           });
 
-          console.log("this.state.allItineraryData");
-          console.log(this.state.allItineraryData);
+          //console.log("this.state.allItineraryData");
+          //console.log(this.state.allItineraryData);
 
 
           // -------------------------Add section---------------------------
@@ -349,7 +350,7 @@ class Itinerary extends Component {
                 for (var i = 0; i < unchangedItineraryData.length; i++) {
                   // if Dates.date matches the dateKey, push entry into its allEntries array
                   if (unchangedItineraryData[i].date === dateKey){
-                    console.log("itin was not empty");
+                    //console.log("itin was not empty");
                     unchangedItineraryData[i].allEntries.push(entry);
                     //unchangedItineraryData[i].allEntries.sort((a,b) => moment(a.entryStartTime).diff(moment(b.entryStartTime))).reverse();
                     isAdded = true;
@@ -358,7 +359,7 @@ class Itinerary extends Component {
                 }
                 //If dateKey doesn't exist as a Dates.date yet, then it will create a new Dates object and add that to allItineraryData
                 if (!isAdded){
-                  console.log("Not in data");
+                  //console.log("Not in data");
                   const Dates = {
                     date:dateKey,
                     allEntries:[entry]
@@ -431,19 +432,38 @@ class Itinerary extends Component {
 
 
   render() {
+    const popover = (
+      <Popover id="popover-basic">
+          <Popover.Title as="h3">How To Use the Itinerary</Popover.Title>
+          <Popover.Content>
+          Using the form on the right, add an itinerary event by giving it a title, selecting a start date and time and an end date and time, and giving it an optional description if necessary. Then click on the "Add Entry" button to populate an itinerary list on the left. Once you add an event, you will see all of them sorted by date and time. On the right of each entry, you can also click on the "Edit" button to edit that event entry, or you can delete it entirely by clicking on the "Delete" button. 
+          </Popover.Content>
+      </Popover>
+    )
+  
     if(this.state.allItineraryData.length === 0){
       return (
-<div className="itinerary">
-        <h1>Itinerary</h1>
+      <div className="itinerary">
+        <div>
+          <Container fluid>
+            <Row className="title">
+            <h1>Itinerary</h1>
+              <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                <Button className="how-to" variant="light">?</Button>
+              </OverlayTrigger>
+            </Row>
+          </Container>
+        </div>
+        
        
         <Container>
-          <Row>
+          <Row className="pageContent">
             <Col md={8}>
-              Itinerary is empty. Please add an entry using the form on the right.
+              <h4>Itinerary is empty.<br/>Please add an entry using the form on the right.</h4>
             </Col>
 
             <Col md={4}>
-              <Form>
+              <Form className="itineraryForm">
                 <Form.Group>
                   <Form.Label>Title</Form.Label>
                   <Form.Control 
@@ -501,9 +521,9 @@ class Itinerary extends Component {
                     onChange = {item => this.updateDescription(item.target.value)}
                   ></Form.Control>
                 </Form.Group>
+                <Button className = "addEntryButton" onClick={() => this.addEntry()}>Add Entry</Button>
               </Form>
-              <Button onClick={() => this.addEntry()}>Add Entry</Button>
-              <Button onClick={()=>console.log(this.state.allItineraryData)}>Show Data</Button>
+              
             </Col>
 
           </Row>
@@ -519,22 +539,31 @@ class Itinerary extends Component {
     else{
       return (
         <div className="itinerary">
-          <h1>Itinerary</h1>
+          <div>
+            <Container fluid>
+              <Row className="title">
+              <h1>Itinerary</h1>
+                <OverlayTrigger trigger={['hover', 'focus']} placement="right" overlay={popover}>
+                  <Button className="how-to" variant="light">?</Button>
+                </OverlayTrigger>
+              </Row>
+            </Container>
+          </div>
          
-          <Container>
-            <Row>
+          <Container >
+            <Row className="pageContent">
               <Col md={8}>
-                <ListGroup>
+                <ListGroup className="dateEntry">
                   {this.state.allItineraryData.map((item) => {return(
                     <ListGroup.Item key={item.date}>{item.date}
                       <Table>
                         <thead>
                           <tr>
-                            <th></th>
-                            <th>Title</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Edit and Delete Buttons</th>
+                            <th className="thIndex"></th>
+                            <th className="thTitle">Title</th>
+                            <th className="thStart">Start Time</th>
+                            <th className="thEnd">End Time</th>
+                            <th className="thButtons"></th>
                           </tr>
                         </thead>
                         
@@ -546,14 +575,14 @@ class Itinerary extends Component {
                                 <td key={entry.entryId+3}>{entry.entryStartTime}</td>
                                 <td key={entry.entryId+4}>{entry.entryEndTime}</td>
                                 <td key={entry.entryId+5}>
-                                  <Button onClick = { () => this.openModal(item.date, entry.entryId)}>Edit</Button> {' '}
-                                  <Button onClick = { ()=> this.deleteEntry(item.date, entry.entryId)}>Delete</Button>
+                                  <Icon.PencilFill color="DodgerBlue" onClick = { () => this.openModal(item.date, entry.entryId)}/>
+                                  <Icon.TrashFill color="red" onClick = { ()=> this.deleteEntry(item.date, entry.entryId)}/>
                                 </td>
                                 
                               </tr>
                               <tr key={entry.entryId+6}>
                                 <td ></td>
-                                <td colSpan="4" key={entry.entryId+7}>{entry.entryDescription}</td>
+                                <td colSpan="4" key={entry.entryId+7}><strong>Description:</strong> <br/>{entry.entryDescription}</td>
                               </tr>
                             
                             </tbody>
@@ -645,7 +674,7 @@ class Itinerary extends Component {
               </Col>
   
               <Col md={4}>
-                <Form>
+                <Form className="itineraryForm">
                   <Form.Group>
                     <Form.Label>Title</Form.Label>
                     <Form.Control 
@@ -703,18 +732,11 @@ class Itinerary extends Component {
                       onChange = {item => this.updateDescription(item.target.value)}
                     ></Form.Control>
                   </Form.Group>
+                  <Button className ="addEntryButton" onClick={() => this.addEntry()}>Add Entry</Button>
                 </Form>
-                <Button onClick={() => this.addEntry()}>Add Entry</Button>
-                <Button onClick={()=>console.log(this.state.allItineraryData)}>Show Data</Button>
               </Col>
-  
             </Row>
           </Container>
-  
-  
-  
-  
-  
         </div>
       )
 
