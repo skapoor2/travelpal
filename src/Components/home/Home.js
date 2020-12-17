@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './home.css';
 import { Card, CardDeck, Container, Button, Form, Modal } from 'react-bootstrap';
 import picture from './img/yosemite.jpg';
+//import { CalendarCheckFill, CalendarCheck } from 'react-bootstrap-icons';
 
 class Home extends Component {
   constructor(props){
@@ -30,7 +31,8 @@ class Home extends Component {
         location:tripLocation,
         startingDate:tripStart,
         endingDate:tripEnd, 
-        additionalNotes:tripNotes
+        additionalNotes:tripNotes,
+        showTripInfo:true
       })
     }
   }
@@ -86,6 +88,7 @@ class Home extends Component {
   }
   openModal(){
     this.setState({
+      showTripInfo:false,
       showModal:true,
       title:this.state.title,
       location:this.state.location,
@@ -107,11 +110,7 @@ class Home extends Component {
       showModal:false,
       showTripInfo:false
     });
-    localStorage.setItem("tripTitle", JSON.stringify("")); 
-    localStorage.setItem("tripLocation", JSON.stringify("")); 
-    localStorage.setItem("tripStart", JSON.stringify("")); 
-    localStorage.setItem("tripEnd", JSON.stringify("")); 
-    localStorage.setItem("tripNotes", JSON.stringify(""));
+    localStorage.clear();
   }
 
   render() {
@@ -120,7 +119,7 @@ class Home extends Component {
         <div className="home">
           <h1>My Trip</h1>
           <Container>
-            <h4>There are no trips planned right now</h4>
+            <h4>There is no trip planned right now</h4>
             <Button onClick= { () => this.openModal()}>Edit</Button>
           </Container>
           <Modal show={this.state.showModal} onHide={this.closeModal.bind(this)} centered backdrop="static">
@@ -158,6 +157,7 @@ class Home extends Component {
                   </Form.Group>
   
                   <Form.Group>
+                  
                     <Form.Label>Ending Date</Form.Label>
                       <Form.Control 
                         type="date"
@@ -220,18 +220,12 @@ class Home extends Component {
     } else {
       return (
         <div className="home">
-          <h1>My Trip</h1>
           <Container>
-            <h3>Trip Title:</h3>
-            <p>{this.state.title}</p>
-            <h4>Location:</h4>
-            <p>{this.state.title}</p>
-            <h4>Starting Date:</h4>
-            <p>{this.state.startingDate}</p>
-            <h4>Ending Date:</h4>
-            <p>{this.state.endingDate}</p>
-            <h4>Additional Notes:</h4>
-            <p>{this.state.additionalNotes}</p>
+            <h1>{this.state.title}</h1>
+            <p><strong>Location:</strong> {this.state.location}</p>
+            <p><strong>Starting Date:</strong> {this.state.startingDate}</p>
+            <p><strong>Ending Date:</strong> {this.state.endingDate}</p>
+            <p><strong>Additional Notes:</strong> {this.state.additionalNotes}</p>
             <Button onClick= { () => this.openModal()}>Edit</Button>
             <Button onClick= { () => this.clearData()}>Clear</Button>
           </Container>
