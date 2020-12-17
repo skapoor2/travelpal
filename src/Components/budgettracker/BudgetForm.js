@@ -1,8 +1,31 @@
 import React from 'react';
-import { Form, Col, Row, Button } from 'react-bootstrap';
+import { Form, Row, Button } from 'react-bootstrap';
 
-const BudgetForm = ({ name, amount, category, handleName, handleAmount, handleCategory, handleSubmitForm }) => (
+const BudgetForm = ({ 
+  date, 
+  name, 
+  category,
+  categories, 
+  amount, 
+  handleDate, 
+  handleName, 
+  handleCategory, 
+  handleAmount, 
+  handleSubmitForm }) => (
   <Form>
+    <h3>New Expense</h3><br/>
+    <Form.Group as={Row}>
+      <Form.Label>
+        Date
+      </Form.Label>
+      <Form.Control 
+        type="date" 
+        name="date"
+        id="expenseDate"
+        value={date}
+        onChange={handleDate}
+      />
+    </Form.Group>
     <Form.Group as={Row}>
       <Form.Label>
         Name of Expense
@@ -18,6 +41,23 @@ const BudgetForm = ({ name, amount, category, handleName, handleAmount, handleCa
     </Form.Group>
     <Form.Group as={Row}>
       <Form.Label>
+        Category
+      </Form.Label>
+      <Form.Control
+        as="select"
+        defaultValue={category}
+        name="category"
+        id="expenseCategory"
+        value={category.value}
+        onChange={handleCategory}
+      >
+        {categories.map(categoryOption => (
+          <option value={categoryOption}>{categoryOption}</option>
+        ))}
+      </Form.Control>
+    </Form.Group>
+    <Form.Group as={Row}>
+      <Form.Label>
         $ Amount
       </Form.Label>
       <Form.Control 
@@ -28,26 +68,6 @@ const BudgetForm = ({ name, amount, category, handleName, handleAmount, handleCa
         value={amount}
         onChange={handleAmount}
       />
-    </Form.Group>
-    <Form.Group as={Row}>
-      <Form.Label>
-        Category
-      </Form.Label>
-      <Form.Control
-        as="select"
-        defaultValue="Other"
-        name="category"
-        id="expenseCategory"
-        value={category.value}
-        onChange={handleCategory}
-      >
-        <option value="Food">Food</option>
-        <option value="Shopping">Shopping</option>
-        <option value="Entertainment">Entertainment</option>
-        <option value="Transportation">Transportation</option>
-        <option value="Lodging">Lodging</option>
-        <option value="Other">Other</option>
-      </Form.Control>
     </Form.Group>
     <Button className="button" type="submit" color="primary" onClick={handleSubmitForm}>
       Add Entry
