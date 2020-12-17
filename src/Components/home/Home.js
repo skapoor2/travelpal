@@ -2,8 +2,12 @@ import moment from 'moment';
 import React, { Component } from 'react';
 import './home.css';
 import { Card, CardDeck, Container, Button, Form, Modal, Col, Row } from 'react-bootstrap';
-import picture from './img/yosemite.jpg';
-//import { CalendarCheckFill, GeoAlt } from 'react-bootstrap-icons';
+//import picture from './img/yosemite.jpg';
+import budgetpicture from './img/karlsson-money-flow.png';
+import packingpicture from './img/delivery.png';
+import calendarpicture from './img/searching-1.png';
+import itinerarypicture from './img/done-1.png';
+
 
 class Home extends Component {
   constructor(props){
@@ -189,27 +193,27 @@ class Home extends Component {
           <Container className="cards">
             <CardDeck>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={packingpicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Packing List</Card.Title>
+                  <Card.Link href="/packing" className="card-title">Packing List</Card.Link>
                 </Card.Body>
               </Card>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={budgetpicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Budget Tracker</Card.Title>
+                <Card.Link href="/budget" className="card-title">Budget Tracker</Card.Link>
                 </Card.Body>
               </Card>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={itinerarypicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Itinerary</Card.Title>
+                  <Card.Link href="/itinerary" className="card-title">Itinerary</Card.Link>
                 </Card.Body>
               </Card>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={calendarpicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Calendar</Card.Title>
+                <Card.Link href="/calendar" className="card-title">Calendar</Card.Link>
                 </Card.Body>
               </Card>
             </CardDeck>
@@ -296,30 +300,30 @@ class Home extends Component {
                       </Button>
               </Modal.Footer>
             </Modal>
-          <Container className="cards">
+            <Container className="cards">
             <CardDeck>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={packingpicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Calendar</Card.Title>
+                  <Card.Link href="/packing" className="card-title">Packing List</Card.Link>
                 </Card.Body>
               </Card>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={budgetpicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Packing List</Card.Title>
+                <Card.Link href="/budget" className="card-title">Budget Tracker</Card.Link>
                 </Card.Body>
               </Card>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={itinerarypicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Itinerary</Card.Title>
+                  <Card.Link href="/itinerary" className="card-title">Itinerary</Card.Link>
                 </Card.Body>
               </Card>
               <Card className="card">
-                <Card.Img className="card-img" variant="top" src={picture} />
+                <Card.Img className="card-img" variant="top" src={calendarpicture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Budget Tracker</Card.Title>
+                <Card.Link href="/calendar" className="card-title">Calendar</Card.Link>
                 </Card.Body>
               </Card>
             </CardDeck>
