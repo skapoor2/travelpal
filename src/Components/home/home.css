@@ -23,6 +23,27 @@ h1 {
     display:block;
 }
 
+
+
 span {
-    font-size: 96;
+    font-size: 120;
 }
+
+.tripinfo{
+    text-align: justify;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 20px;
+    border: 1px solid gray;
+    padding: 2em 2em 1em 2em;
+}
+
+.contain{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.cards{
+    margin-top: 2%;
+}
+

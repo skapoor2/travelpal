@@ -124,9 +124,8 @@ class packingList extends Component {
                         </div>
 
                         <div className="taskListElements">
-                            <Container className="list">
                             <p>List of Items</p>
-                            <Item tasks={this.state.taskList} handleTaskClick={this.handleTaskClick} /></Container>
+                            <Item tasks={this.state.taskList} handleTaskClick={this.handleTaskClick} />
                         </div>
             </div>
         );

@@ -1,9 +1,9 @@
 import moment from 'moment';
 import React, { Component } from 'react';
 import './home.css';
-import { Card, CardDeck, Container, Button, Form, Modal } from 'react-bootstrap';
+import { Card, CardDeck, Container, Button, Form, Modal, Col, Row } from 'react-bootstrap';
 import picture from './img/yosemite.jpg';
-//import { CalendarCheckFill, CalendarCheck } from 'react-bootstrap-icons';
+//import { CalendarCheckFill, GeoAlt } from 'react-bootstrap-icons';
 
 class Home extends Component {
   constructor(props){
@@ -69,7 +69,7 @@ class Home extends Component {
     else {
       const startDate = moment(this.state.startingDate, "YYYY-MM-DD");
       const endDate = moment(this.state.endingDate, "YYYY-MM-DD");
-
+      
       if (endDate.isBefore(startDate)){
         alert("End Date/Time cannot be before Start Date/Time. Please fix before adding entry.")
       }
@@ -88,7 +88,7 @@ class Home extends Component {
   }
   openModal(){
     this.setState({
-      showTripInfo:false,
+      //showTripInfo:false,
       showModal:true,
       title:this.state.title,
       location:this.state.location,
@@ -117,11 +117,11 @@ class Home extends Component {
     if (this.state.showTripInfo===false){
       return (
         <div className="home">
-          <h1>My Trip</h1>
-          <Container>
+          <h1>Plan your Trip!!</h1>
+          <Container className="contain">
             <h4>There is no trip planned right now</h4>
-            <Button onClick= { () => this.openModal()}>Edit</Button>
           </Container>
+          <Button size="lg" onClick= { () => this.openModal()}>Edit</Button>
           <Modal show={this.state.showModal} onHide={this.closeModal.bind(this)} centered backdrop="static">
             <Modal.Header closeButton>
               <Modal.Title>Edit Trip Information</Modal.Title>
@@ -186,7 +186,6 @@ class Home extends Component {
                       </Button>
               </Modal.Footer>
             </Modal>
-          <p>upload image file</p>
           <Container className="cards">
             <CardDeck>
               <Card className="card">
@@ -220,15 +219,20 @@ class Home extends Component {
     } else {
       return (
         <div className="home">
+          <h1>{this.state.title}</h1>
           <Container>
-            <h1>{this.state.title}</h1>
+            <Row className="tripinfo"><Col>
             <p><strong>Location:</strong> {this.state.location}</p>
             <p><strong>Starting Date:</strong> {this.state.startingDate}</p>
             <p><strong>Ending Date:</strong> {this.state.endingDate}</p>
-            <p><strong>Additional Notes:</strong> {this.state.additionalNotes}</p>
-            <Button onClick= { () => this.openModal()}>Edit</Button>
-            <Button onClick= { () => this.clearData()}>Clear</Button>
+            </Col>
+            <Col>
+            <p><strong>Additional Notes:</strong> {this.state.additionalNotes}</p></Col>
+            </Row>
           </Container>
+          <Row className="justify-content-md-center"><Col md="auto">
+            <Button size="lg" onClick= { () => this.openModal()}>Edit</Button></Col>
+            <Col md="auto"><Button size="lg" onClick= { () => this.clearData()}>Clear</Button></Col></Row>
           <Modal show={this.state.showModal} onHide={this.closeModal.bind(this)} centered backdrop="static">
             <Modal.Header closeButton>
               <Modal.Title>Edit Trip Information</Modal.Title>
@@ -292,7 +296,6 @@ class Home extends Component {
                       </Button>
               </Modal.Footer>
             </Modal>
-          <p>upload image file</p>
           <Container className="cards">
             <CardDeck>
               <Card className="card">
