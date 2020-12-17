@@ -44,16 +44,13 @@ p {
 
 .button {
     width: 8em;
-    margin: 1em;
 }
 
 .form {
     border-radius: 20px;
-    padding: 1em;
+    padding: 2em 3em;
     border: 1px solid lightgray;
     margin-bottom: 2em;
-    display: flex;
-    justify-content: center;
     width: 25em;
     text-align: center;
 }
@@ -65,8 +62,16 @@ p {
     margin-bottom: 2em;
 }
 
-.edit-icon {
-    margin-right: 10px;
+.edit-icon svg {
+    color: dodgerblue;
+    width: 18px;
+    margin-right: 1em;
+}
+
+.delete-icon svg {
+    color: red;
+    width: 18px;
+    margin-right: 0em;
 }
 
 

@@ -2,11 +2,11 @@ p {
     font-size: 20px;
 }
 
-div{
+/* div{
     padding-left:5px;
     padding-right:5px;
     padding-top: 10px;
-}
+} */
 
 FullCalendar{
     width:auto;

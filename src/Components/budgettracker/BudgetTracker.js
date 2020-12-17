@@ -8,10 +8,11 @@ import {
   Popover, 
   OverlayTrigger, 
   Form, 
-  Table 
+  Table,
+  Modal 
 } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
-import BudgetForm from './BudgetForm';
+import ExpenseForm from './ExpenseForm';
 
 const TRIP_BUDGET = localStorage.getItem('budget')
   ? JSON.parse(localStorage.getItem('budget'))
@@ -29,6 +30,7 @@ function BudgetTracker() {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('Other');
   const [amount, setAmount] = useState('');
+  const [showEditForm, setShowEditForm] = useState(false);
 
   const categories = ['Food', 'Shopping', 'Entertainment', 'Transportation', 'Lodging', 'Other'];
 
@@ -67,11 +69,6 @@ function BudgetTracker() {
   }
 
   const handleRemoveExpense = (e) => {
-    console.log(e);
-    console.log(e.target);
-    console.log(e.target.name);
-    console.log(e.target.value);
-    console.log(e.target.parentElement);
     setExpenses(expenses.filter(expense => expense !== e));
   }
 
@@ -80,6 +77,23 @@ function BudgetTracker() {
       setExpenses([])
     else
       alert('There are no expenses logged!')
+  }
+
+  const handleCloseEditForm = () => setShowEditForm(false);
+
+  const handleShowEditForm = () => setShowEditForm(true);
+
+  const handleSaveEditForm = event => {
+    event.preventDefault()
+    if ( date !== '' && name !== '' && category !== '' && amount > 0 ) {
+      setDate(date)
+      setName(name)
+      setCategory(category)
+      setAmount(amount)
+      setShowEditForm(false)
+    } else {
+      alert('Invalid expense! You must input a date, name, category, and amount.')
+    }
   }
 
   useEffect(() => {
@@ -139,7 +153,8 @@ function BudgetTracker() {
       <Row>
         <Col>
           <Container className="form">
-            <BudgetForm
+            <h3>New Expense</h3><br/>
+            <ExpenseForm
               date={date}
               name={name}
               category={category}
@@ -149,8 +164,10 @@ function BudgetTracker() {
               handleName={handleName}
               handleCategory={handleCategory}
               handleAmount={handleAmount}
-              handleSubmitForm={handleSubmitForm}
             />
+            <Button className="button" type="submit" color="primary" onClick={handleSubmitForm}>
+              Add Entry
+            </Button>
           </Container>
         </Col>
         <Col>
@@ -163,7 +180,7 @@ function BudgetTracker() {
                     <th>Date</th>
                     <th>Expense</th>
                     <th>Amount</th>
-                    <th>Edit</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -174,8 +191,36 @@ function BudgetTracker() {
                         <td>{expense.name}</td>
                         <td>${expense.amount}</td>
                         <td>
-                          <span className="edit-icon"><a href="#login"><Icon.PencilFill /></a></span>
-                          <Icon.TrashFill name={expense.name} value={expense.name} onClick={handleRemoveExpense}/>
+                          <span className="edit-icon" onClick={handleShowEditForm}><Icon.PencilFill /></span>
+                          <span className="delete-icon" name={expense.name} value={expense.name} onClick={handleRemoveExpense}><Icon.TrashFill /></span>
+                          <Modal show={showEditForm} onHide={handleCloseEditForm}>
+                            <Modal.Header closeButton>
+                              <Modal.Title>Edit Expense</Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                              <Container>
+                                <ExpenseForm
+                                  date={expense.date}
+                                  name={expense.name}
+                                  category={expense.category}
+                                  categories={categories}
+                                  amount={expense.amount}
+                                  handleDate={handleDate}
+                                  handleName={handleName}
+                                  handleCategory={handleCategory}
+                                  handleAmount={handleAmount}
+                                />
+                              </Container>
+                            </Modal.Body>
+                            <Modal.Footer>
+                              <Button variant="secondary" onClick={handleCloseEditForm}>
+                                Close
+                              </Button>
+                              <Button variant="primary" onClick={handleSaveEditForm}>
+                                Save
+                              </Button>
+                            </Modal.Footer>
+                          </Modal>
                         </td>
                       </tr>
                     ))

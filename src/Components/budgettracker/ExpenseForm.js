@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Row, Button } from 'react-bootstrap';
+import { Form, Row } from 'react-bootstrap';
 
-const BudgetForm = ({ 
+const ExpenseForm = ({ 
   date, 
   name, 
   category,
@@ -11,9 +11,8 @@ const BudgetForm = ({
   handleName, 
   handleCategory, 
   handleAmount, 
-  handleSubmitForm }) => (
+  }) => (
   <Form>
-    <h3>New Expense</h3><br/>
     <Form.Group as={Row}>
       <Form.Label>
         Date
@@ -69,10 +68,6 @@ const BudgetForm = ({
         onChange={handleAmount}
       />
     </Form.Group>
-    <Button className="button" type="submit" color="primary" onClick={handleSubmitForm}>
-      Add Entry
-    </Button>
   </Form>
 )
-
-export default BudgetForm
+export default ExpenseForm
