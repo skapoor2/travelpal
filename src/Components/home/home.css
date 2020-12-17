@@ -35,7 +35,9 @@ span {
     margin-bottom: 2%;
     border-radius: 20px;
     border: 1px solid gray;
-    padding: 2em 2em 1em 2em;
+    padding: 2em 2em 2em 2em;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .contain{
