@@ -192,13 +192,13 @@ class Home extends Component {
               <Card className="card">
                 <Card.Img className="card-img" variant="top" src={picture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Calendar</Card.Title>
+                  <Card.Title className="card-title">Packing List</Card.Title>
                 </Card.Body>
               </Card>
               <Card className="card">
                 <Card.Img className="card-img" variant="top" src={picture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Packing List</Card.Title>
+                  <Card.Title className="card-title">Budget Tracker</Card.Title>
                 </Card.Body>
               </Card>
               <Card className="card">
@@ -210,7 +210,7 @@ class Home extends Component {
               <Card className="card">
                 <Card.Img className="card-img" variant="top" src={picture} />
                 <Card.Body>
-                  <Card.Title className="card-title">Budget Tracker</Card.Title>
+                  <Card.Title className="card-title">Calendar</Card.Title>
                 </Card.Body>
               </Card>
             </CardDeck>
