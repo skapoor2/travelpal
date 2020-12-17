@@ -22,10 +22,10 @@ class App extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link className="nav-link" href="/">Home</Nav.Link>
-                <Nav.Link className="nav-link" href="/calendar">Calendar</Nav.Link>
                 <Nav.Link className="nav-link" href="/packing">Packing List</Nav.Link>
-                <Nav.Link className="nav-link" href="/itinerary">Itinerary</Nav.Link>
                 <Nav.Link className="nav-link" href="/budget">Budget Tracker</Nav.Link>
+                <Nav.Link className="nav-link" href="/itinerary">Itinerary</Nav.Link>
+                <Nav.Link className="nav-link" href="/calendar">Calendar</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
