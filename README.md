@@ -30,8 +30,26 @@ Resources used:
 ### Budget Planner
 
 ### Itinerary 
+The itinerary page allows users to add an event entry that may/will occur on their planned trip. This page is to help those who need to plan out their trips by day and time in order to be most efficient with their use of their time. Users can give their event a name, a start and end date and time, as well as an optional description for any miscellaneous information about that entry (e.g. address information, flight number information, phone numbers, etc). If needed, users can also edit each event entry as well as delete using the respective icons next to each entry.  
+
+Resources used:
+- https://www.geeksforgeeks.org/how-to-create-todo-app-using-reactjs/
+- https://fullcalendar.io/docs/react
+- https://stackoverflow.com/questions/29606643/difference-between-moment-js-functions-and-javascript-date-functions/29606774
+- https://momentjs.com/docs/#/use-it/
+- https://devhints.io/moment
+- https://stackoverflow.com/questions/52586726/javascript-moment-js-how-to-check-if-date-is-previous-date
+- https://blog.bitsrc.io/build-a-simple-modal-component-with-react-16decdc111a6
+- https://jsonworld.com/demo/how-to-use-localStorage-with-reactjs
+- https://stackoverflow.com/questions/43668808/render-data-from-localstorage-with-react
 
 ### Calendar
+The calendar page works in sync with the itinerary page. Here, all entries added to the itinerary will be displayed in calendar form. The user can navigate to different mopnths using the arrow buttons on the top right, and if necessary, they can jump back to today's date by clicking on the "today" button. 
+
+Resources used:
+- https://github.com/fullcalendar/fullcalendar-example-projects/blob/master/react/src/DemoApp.jsx
+- https://dev.to/lberge17/fullcalendar-with-react-3hnl
+- https://fullcalendar.io/docs/event-object
 
 
 ## Available Scripts
