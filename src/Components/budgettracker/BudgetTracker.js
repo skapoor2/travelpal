@@ -68,8 +68,8 @@ function BudgetTracker() {
     }
   }
 
-  const handleRemoveExpense = (e) => {
-    setExpenses(expenses.filter(expense => expense !== e));
+  const handleRemoveExpense = event => {
+    setExpenses(expenses.filter(expense => expense.name !== event.currentTarget.value));
   }
 
   const handleClearExpenses = () => {
@@ -191,8 +191,8 @@ function BudgetTracker() {
                         <td>{expense.name}</td>
                         <td>${expense.amount}</td>
                         <td>
-                          <span className="edit-icon" onClick={handleShowEditForm}><Icon.PencilFill /></span>
-                          <span className="delete-icon" name={expense.name} value={expense.name} onClick={handleRemoveExpense}><Icon.TrashFill /></span>
+                          <span className="edit-icon"><Button className="edit-btn" onClick={handleShowEditForm}><Icon.PencilFill /></Button></span>
+                          <span className="delete-icon"><Button className="delete-btn" name={expense.name} value={expense.name} onClick={handleRemoveExpense}><Icon.TrashFill /></Button></span>
                           <Modal show={showEditForm} onHide={handleCloseEditForm}>
                             <Modal.Header closeButton>
                               <Modal.Title>Edit Expense</Modal.Title>
@@ -236,7 +236,7 @@ function BudgetTracker() {
               </span>      
             </Container>
           ))}
-          <Button className="button" variant="danger" type='submit' color='danger' onClick={handleClearExpenses}>
+          <Button className="button" variant="danger" type='submit' color='danger' style={{marginBottom: '2em'}} onClick={handleClearExpenses}>
             Clear All
           </Button>
         </Col>

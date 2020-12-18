@@ -68,10 +68,32 @@ p {
     margin-right: 1em;
 }
 
+.edit-btn {
+    background-color: white;
+    border-color: white;
+    width: 45px;
+    
+}
+
+.edit-btn:hover {
+    background-color: lightgray;
+    border-color: lightgray;
+}
+
 .delete-icon svg {
     color: red;
     width: 18px;
     margin-right: 0em;
+}
+
+.delete-btn {
+    background-color: white;
+    border-color: white;
+}
+
+.delete-btn:hover {
+    background-color: lightgray;
+    border-color: lightgray;
 }
 
 
