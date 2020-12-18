@@ -22,7 +22,6 @@ class PackingList extends Component {
     componentDidMount(){
         const packingData = JSON.parse(localStorage.getItem("packingList"));
         const packingProgress = JSON.parse(localStorage.getItem("progress"));
-        console.log(packingData);
         if (localStorage.getItem("packingList")) {
           this.setState({
             packingList:packingData,

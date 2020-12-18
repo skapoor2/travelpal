@@ -13,7 +13,7 @@ class Edit extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.updatedTaskList(this.state.taskValue);
+        this.props.current(this.state.taskValue);
         this.setState({
             taskValue: ''
         })
