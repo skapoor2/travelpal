@@ -16,8 +16,8 @@ Runs the app on [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Page Development
 Overall resources: 
-https://react-bootstrap.github.io/components/ and all documentation for React Bootstrap Components
-https://reactjs.org/docs/getting-started.html
+- https://react-bootstrap.github.io/components/ and all documentation for React Bootstrap Components
+- https://reactjs.org/docs/getting-started.html
 
 ### Home
 The home page allows users to input any basic information about their trip - the dates they'll be traveling, where they are going, and any additional notes to themselves while preparing. The local storage on this page also allows users to have their trip information saved upon entry (until they clear it). 
