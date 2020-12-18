@@ -9,59 +9,59 @@ import './packingList.css';
 //It was used as a sort of blueprint for the code for the packing list, with a lot of the helper functions being used to help set up the input system.
 //Several elements like the storage, styling, and even changes to the helper functions took place after using the documentation to build a steady foundation. 
 
-class packingList extends Component {
+class PackingList extends Component {
 
     constructor(props) {
         super(props)
         this.state = {
-            taskList: [],
+            packingList: [],
             progress: 0 
         }
     }
 
     componentDidMount(){
-        const packingData = JSON.parse(localStorage.getItem("taskList"));
+        const packingData = JSON.parse(localStorage.getItem("packingList"));
         const packingProgress = JSON.parse(localStorage.getItem("progress"));
         console.log(packingData);
-        if (localStorage.getItem("taskList")) {
+        if (localStorage.getItem("packingList")) {
           this.setState({
-            taskList:packingData,
+            packingList:packingData,
             progress:packingProgress
           })
         }
       }
 
-    updateTaskList = (taskValue) => {
+    updatepackingList = (taskValue) => {
         if (taskValue !== ''){
-        const prevTaskList = this.state.taskList.slice();
-        const updatedTaskList = [...prevTaskList, ...[{ key: Date.now(), task: taskValue, completed: false }]];
-        const computeUpdatedProgress = this.computeProgress(updatedTaskList);
+        const before = this.state.packingList.slice();
+        const current = [...before, ...[{ key: Date.now(), task: taskValue, completed: false }]];
+        const percentProgress = this.computeProgress(current);
         this.setState({
-            progress: computeUpdatedProgress,
-            taskList: updatedTaskList,
+            progress: percentProgress,
+            packingList: current,
         })
-        localStorage.setItem("taskList", JSON.stringify(updatedTaskList))
-        localStorage.setItem("progress", JSON.stringify(computeUpdatedProgress))
+        localStorage.setItem("packingList", JSON.stringify(current))
+        localStorage.setItem("progress", JSON.stringify(percentProgress))
         } else {
         alert('Invalid Item');
         }
     }
 
-    computeProgress(taskList) {
+    computeProgress(packingList) {
         let completed = 0;
-        taskList.forEach(task => {
+        packingList.forEach(task => {
             if(task.completed) {
                 completed++;
             }
         });
 
-        const progress = (completed / taskList.length).toFixed(2);
+        const progress = (completed / packingList.length).toFixed(2);
         return progress * 100;
     }
 
     handleTaskClick = (key) => {
-        const prevTaskList = this.state.taskList.slice();
-        const completedTasks = prevTaskList.map(task => {
+        const before = this.state.packingList.slice();
+        const completedTasks = before.map(task => {
             if(task.key === key) {
                 task.completed = !task.completed;
                 task.variant = "light"
@@ -69,26 +69,26 @@ class packingList extends Component {
             task.variant = "success"
             return task;
         });
-        const computeUpdatedProgress = this.computeProgress(completedTasks);
+        const percentProgress = this.computeProgress(completedTasks);
 
         this.setState({
-            progress: computeUpdatedProgress,
-            taskList: completedTasks,
+            progress: percentProgress,
+            packingList: completedTasks,
         })
-        localStorage.setItem("taskList", JSON.stringify(completedTasks))
-        localStorage.setItem("progress", JSON.stringify(computeUpdatedProgress))
+        localStorage.setItem("packingList", JSON.stringify(completedTasks))
+        localStorage.setItem("progress", JSON.stringify(percentProgress))
     }
 
     handleCompletedTasks = () => {
-        const prevTaskList = this.state.taskList.slice();
-        const completed = prevTaskList.filter(task => task.completed);
-        const unCompletedTasks = prevTaskList.filter(task => !task.completed);
+        const before = this.state.packingList.slice();
+        const completed = before.filter(task => task.completed);
+        const unCompletedTasks = before.filter(task => !task.completed);
         if (completed.length !== 0){
         this.setState({
-            taskList: unCompletedTasks,
+            packingList: unCompletedTasks,
             progress: 0
         })
-        localStorage.setItem("taskList", JSON.stringify(unCompletedTasks))
+        localStorage.setItem("packingList", JSON.stringify(unCompletedTasks))
         localStorage.setItem("progress", JSON.stringify(0))}
         else {
             alert("There are no completed items");
@@ -115,7 +115,7 @@ class packingList extends Component {
               </OverlayTrigger></Row></Container></div>
                         <div className="InputElements">
                           <Container className="additem">
-                        <Edit updatedTaskList={this.updateTaskList} handleCompletedTasks={this.handleCompletedTasks} /></Container>
+                        <Edit current={this.updatepackingList} handleCompletedTasks={this.handleCompletedTasks} /></Container>
                             <div className="taskProgressBar">
                             <h4>Percentage of Items Packed</h4>
                                 <ProgressBar className="progressbar" now={this.state.progress} label={`${this.state.progress}%`} />
@@ -123,9 +123,9 @@ class packingList extends Component {
                             </div>
                         </div>
 
-                        <div className="taskListElements">
+                        <div className="packingListElements">
                             <p>List of Items</p>
-                            <Item tasks={this.state.taskList} handleTaskClick={this.handleTaskClick} />
+                            <Item tasks={this.state.packingList} handleTaskClick={this.handleTaskClick} />
                         </div>
             </div>
         );
@@ -138,4 +138,4 @@ class packingList extends Component {
     }
 }
 
-export default packingList;
+export default PackingList;

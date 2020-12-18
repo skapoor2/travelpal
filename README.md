@@ -9,6 +9,32 @@ wherever they go.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Page Development: 
+Overall resources: 
+     https://react-bootstrap.github.io/components/ and all documentation for React Bootstrap Components
+
+# Home
+    The home page allows users to input any basic information about their trip - the dates they'll be traveling, where they are going, and any additional notes to themselves while preparing. The local storage on this page also allows users to have their trip information saved upon entry (until they clear it). 
+
+    Resources used: 
+    - https://stackoverflow.com/questions/49007357/how-to-make-the-whole-card-component-clickable-in-material-ui-using-react-js (for linking the cards)
+    - https://l.facebook.com/l.php?u=https%3A%2F%2Ficons8.com%2Fillustrations%3Ffbclid%3DIwAR0ZrgvDANBVFglIEDvqO9fDxGykwbsBk8084Z6jj4JjvhlRkcwwSctE7kw&h=AT0RInnaaQys0_lUEr0LGazvrq6-BL8v9VoXjRxahKUv-3sQenZxCRWg2MVeuuF03-Q5smD_TTK68L62Is-IDlgKsPKYjaJxsR4gipMaZBjFYjHVHP3IFrN10K7Oid4f1L9ElPv1TSQ (for our icons within the cards)
+    - Development and storage from the itinerary page (which was developed before this one)
+# Packing List
+    The packing list page allows users to enter any items they made need on their trip, and keep track of those items as they pack them. The percentage bar on the page allows them to see how much they have packed and they need to pack, and when they are done they can remove their completed packed items. 
+
+    Resources used: 
+    - https://github.com/prabhath6/to-do-list-react-bootstrap/tree/master/src (helped with foundation of Packing List [explained more in PackingList.js])
+    - The formatting of other pages (Budget Tracker, etc.) to help centralize and format this page
+
+# Budget Planner
+
+# Itinerary 
+
+# Calendar
+
+## ----------------------
+
 ## Available Scripts
 
 In the project directory, you can run:

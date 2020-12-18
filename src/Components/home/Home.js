@@ -7,6 +7,7 @@ import budgetpicture from './img/karlsson-money-flow.png';
 import packingpicture from './img/delivery.png';
 import calendarpicture from './img/searching-1.png';
 import itinerarypicture from './img/done-1.png';
+import { Link } from 'react-router-dom';
 
 
 class Home extends Component {
@@ -192,29 +193,29 @@ class Home extends Component {
             </Modal>
           <Container className="cards">
             <CardDeck>
-              <Card className="card">
+            <Card className="card"><Link to={'/packing'}>
                 <Card.Img className="card-img" variant="top" src={packingpicture} />
                 <Card.Body>
-                  <Card.Link href="/packing" className="card-title">Packing List</Card.Link>
-                </Card.Body>
+                  <Card.Title className="card-title">Packing List</Card.Title>
+                </Card.Body></Link>
               </Card>
-              <Card className="card">
+              <Card className="card"><Link to={'/budget'}>
                 <Card.Img className="card-img" variant="top" src={budgetpicture} />
                 <Card.Body>
-                <Card.Link href="/budget" className="card-title">Budget Tracker</Card.Link>
-                </Card.Body>
+                <Card.Title className="card-title">Budget Tracker</Card.Title>
+                </Card.Body></Link>
               </Card>
-              <Card className="card">
+              <Card className="card"><Link to={'itinerary'}>
                 <Card.Img className="card-img" variant="top" src={itinerarypicture} />
                 <Card.Body>
-                  <Card.Link href="/itinerary" className="card-title">Itinerary</Card.Link>
-                </Card.Body>
+                  <Card.Title className="card-title">Itinerary</Card.Title>
+                </Card.Body></Link>
               </Card>
-              <Card className="card">
+              <Card className="card"><Link to={'calendar'}>
                 <Card.Img className="card-img" variant="top" src={calendarpicture} />
                 <Card.Body>
-                <Card.Link href="/calendar" className="card-title">Calendar</Card.Link>
-                </Card.Body>
+                <Card.Title className="card-title">Calendar</Card.Title>
+                </Card.Body></Link>
               </Card>
             </CardDeck>
           </Container>
