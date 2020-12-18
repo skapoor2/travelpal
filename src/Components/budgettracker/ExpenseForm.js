@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Row } from 'react-bootstrap';
 
+// form for adding a new expense and editing an expense
 const ExpenseForm = ({ 
   date, 
   name, 

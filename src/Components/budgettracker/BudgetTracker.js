@@ -14,10 +14,12 @@ import {
 import * as Icon from 'react-bootstrap-icons';
 import ExpenseForm from './ExpenseForm';
 
+// budget of the trip set by the user
 const TRIP_BUDGET = localStorage.getItem('budget')
   ? JSON.parse(localStorage.getItem('budget'))
   : '0'
 
+  // list of all trip expenses
 const ALL_EXPENSES = localStorage.getItem('expenses')
   ? JSON.parse(localStorage.getItem('expenses'))
   : []
@@ -34,6 +36,7 @@ function BudgetTracker() {
 
   const categories = ['Food', 'Shopping', 'Entertainment', 'Transportation', 'Lodging', 'Other'];
 
+  // handler functions to update expense attributes
   const handleDate = event => {
     setDate(event.target.value)
   }
@@ -54,6 +57,7 @@ function BudgetTracker() {
     setBudget(event.target.value)
   }
 
+  // handle add entry and add new expense to expense list
   const handleSubmitForm = event => {
     event.preventDefault()
     if ( date !== '' && name !== '' && category !== '' && amount > 0 ) {
@@ -68,10 +72,12 @@ function BudgetTracker() {
     }
   }
 
+  // removes an expense
   const handleRemoveExpense = event => {
     setExpenses(expenses.filter(expense => expense.name !== event.currentTarget.value));
   }
 
+  // clears all expenses
   const handleClearExpenses = () => {
     if ( expenses.length > 0 )
       setExpenses([])
@@ -79,6 +85,7 @@ function BudgetTracker() {
       alert('There are no expenses logged!')
   }
 
+  // handlers for edit expense form
   const handleCloseEditForm = () => setShowEditForm(false);
 
   const handleShowEditForm = () => setShowEditForm(true);
@@ -96,11 +103,13 @@ function BudgetTracker() {
     }
   }
 
+  // saves expense list and budget to local storage
   useEffect(() => {
     localStorage.setItem('expenses', JSON.stringify(expenses))
     localStorage.setItem('budget', JSON.stringify(budget))
   })
 
+  // how to use budget tracker
   const popover = (
     <Popover id="popover-basic">
       <Popover.Title as="h3">How to use the Budget Tracker</Popover.Title>
