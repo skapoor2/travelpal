@@ -1,17 +1,23 @@
 # Travel Pal
 
 Travel Pal is a trip planning web application that includes a packing list, itinerary, budget tracker, and
-calendar feature. This application is built using HTML/CSS, Bootstrap, JavaScript, React, JQuery,
-and public web APIs. The purpose of this web application is to help people plan and organize their travels
-better, sorting travel aspects out into different pages and making them accessible and customizable
-wherever they go.
-
+calendar feature. This application is built using HTML/CSS, Bootstrap, JavaScript, React, and public web APIs. 
+The purpose of this web application is to help people plan and organize their travels better, sorting travel 
+aspects out into different pages and making them accessible and customizable wherever they go.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Page Development: 
+## How to Run
+
+### `npm install`
+Installs all the dependencies of the app.
+### `npm start`
+Runs the app on [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Page Development
 Overall resources: 
 https://react-bootstrap.github.io/components/ and all documentation for React Bootstrap Components
+https://reactjs.org/docs/getting-started.html
 
 ### Home
 The home page allows users to input any basic information about their trip - the dates they'll be traveling, where they are going, and any additional notes to themselves while preparing. The local storage on this page also allows users to have their trip information saved upon entry (until they clear it). 
@@ -27,7 +33,15 @@ Resources used:
 - https://github.com/prabhath6/to-do-list-react-bootstrap/tree/master/src (helped with foundation of Packing List [explained more in PackingList.js])
 - The formatting of other pages (Budget Tracker, etc.) to help centralize and format this page
 
-### Budget Planner
+### Budget Tracker
+The budget tracker page allows users to set a budget and log any expenses they make throughout their trip. Users can create a new expense entry by inputting the date, name of expense, category, and the amount they spent. Once they add the entry, it will appear under its respective category. There are six categories that include food, shopping, entertainment, transportation, lodging, and other. Each category section displays the total amount spent for that specific category. Users can also edit and delete expense entries. The top of the budget tracker also displays the total amount of money spent as well as the amount remaining in the budget. 
+
+Resources used:
+- https://dev.to/amanhimself/build-a-expense-tracker-app-with-react-hooks-and-localstorage-api-4lfj
+- https://dev.to/viclafouch/build-a-complete-modal-component-with-react-hooks-2fk8
+- https://www.pluralsight.com/guides/prop-changes-in-react-component
+- https://ozmoroz.com/2018/07/pass-value-to-onclick-react/
+- https://tyindpgood.medium.com/add-delete-item-from-state-array-in-react-hook-9d7f73d66d80
 
 ### Itinerary 
 The itinerary page allows users to add an event entry that may/will occur on their planned trip. This page is to help those who need to plan out their trips by day and time in order to be most efficient with their use of their time. Users can give their event a name, a start and end date and time, as well as an optional description for any miscellaneous information about that entry (e.g. address information, flight number information, phone numbers, etc). If needed, users can also edit each event entry as well as delete using the respective icons next to each entry.  
@@ -51,6 +65,15 @@ Resources used:
 - https://dev.to/lberge17/fullcalendar-with-react-3hnl
 - https://fullcalendar.io/docs/event-object
 
+## Bonus Features
+ ### Calendar
+ Trip calendar that displays itinerary events, implemented using the FullCalendar API. (Considered a bonus feature by the Professor's comment on our Project Plan)
+
+ ### Home Page
+ Users can create a new trip and edit its information. Also includes cards with illustrations that navigate to each page.
+
+ ### Packing List Progress Bar
+ The packing list page includes a progress bar that allows users to see the percentage of items they have packed.
 
 ## Available Scripts
 
