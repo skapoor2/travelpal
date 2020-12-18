@@ -5,6 +5,11 @@ calendar feature. This application is built using HTML/CSS, Bootstrap, JavaScrip
 The purpose of this web application is to help people plan and organize their travels better, sorting travel 
 aspects out into different pages and making them accessible and customizable wherever they go.
 
+Built by: 
+Bryan Snyder (netId: btsnyder)
+Trisha Le (netId: trishaal)
+Shreya Kapoor (netId: skapoor2)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## How to Run
