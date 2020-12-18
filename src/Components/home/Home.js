@@ -122,7 +122,10 @@ class Home extends Component {
     if (this.state.showTripInfo===false){
       return (
         <div className="home">
-          <h1>Plan your Trip!!</h1>
+          <h1>Welcome to Travel Pal!</h1>
+          <br/>
+
+          <h2>Plan Your Trip!!</h2>
           <Container className="contain">
             <h4>There is no trip planned right now</h4>
           </Container>
@@ -224,7 +227,9 @@ class Home extends Component {
     } else {
       return (
         <div className="home">
-          <h1>{this.state.title}</h1>
+          <h1>Welcome to Travel Pal!</h1>
+
+          <h2>{this.state.title}</h2>
           <Container>
             <Row className="tripinfo"><Col>
             <p><strong>Location:</strong> {this.state.location}</p>
