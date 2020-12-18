@@ -55,3 +55,7 @@ span {
     margin-top: 2%;
 }
 
+p{
+    word-break:break-all;
+}
+

@@ -18,19 +18,20 @@ class Calendar extends Component {
   formatEvents(){
     const allEvents = [];
 
-    for (var i = 0; i < this.state.allItineraryEvents.length; i++){
-      for (var j = 0; j < this.state.allItineraryEvents[i].allEntries.length; j++){
-        var startDate = new Date(this.state.allItineraryEvents[i].allEntries[j].entryStart);
-        var endDate = new Date(this.state.allItineraryEvents[i].allEntries[j].entryEnd);
-        var event = {
-          title:this.state.allItineraryEvents[i].allEntries[j].entryTitle,
-          start:startDate,
-          end:endDate
-        };
-        allEvents.push(event);
+    if (this.state.allItineraryEvents !== null){
+      for (var i = 0; i < this.state.allItineraryEvents.length; i++){
+        for (var j = 0; j < this.state.allItineraryEvents[i].allEntries.length; j++){
+          var startDate = new Date(this.state.allItineraryEvents[i].allEntries[j].entryStart);
+          var endDate = new Date(this.state.allItineraryEvents[i].allEntries[j].entryEnd);
+          var event = {
+            title:this.state.allItineraryEvents[i].allEntries[j].entryTitle,
+            start:startDate,
+            end:endDate
+          };
+          allEvents.push(event);
+        }
       }
     }
-  
     return (allEvents)
   }
 

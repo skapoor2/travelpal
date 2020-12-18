@@ -126,7 +126,7 @@ class Home extends Component {
           <Container className="contain">
             <h4>There is no trip planned right now</h4>
           </Container>
-          <Button size="lg" onClick= { () => this.openModal()}>Edit</Button>
+          <Button size="lg" onClick= { () => this.openModal()}>Add Trip</Button>
           <Modal show={this.state.showModal} onHide={this.closeModal.bind(this)} centered backdrop="static">
             <Modal.Header closeButton>
               <Modal.Title>Edit Trip Information</Modal.Title>
@@ -228,11 +228,9 @@ class Home extends Component {
           <Container>
             <Row className="tripinfo"><Col>
             <p><strong>Location:</strong> {this.state.location}</p>
-            <p><strong>Starting Date:</strong> {this.state.startingDate}</p>
-            <p><strong>Ending Date:</strong> {this.state.endingDate}</p>
-            </Col>
-            <Col>
-            <p><strong>Additional Notes:</strong> {this.state.additionalNotes}</p></Col>
+            <p><strong>Starting Date:</strong> {moment(this.state.startingDate, "YYYY-MM-DD").format("dddd, MMM D, YYYY")}</p>
+            <p><strong>Ending Date:</strong> {moment(this.state.endingDate, "YYYY-MM-DD").format("dddd, MMM D, YYYY")}</p>
+            <p id="additionalNotes"><strong>Additional Notes:</strong> {this.state.additionalNotes}</p></Col>
             </Row>
           </Container>
           <Row className="justify-content-md-center"><Col md="auto">
